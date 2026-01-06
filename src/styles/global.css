@@ -1,17 +1,52 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+/* 1. Import Tailwind */
+@import "tailwindcss";
 
+/* 2. Import ฟอนต์ Anuphan ที่เพิ่งโหลดมา */
+@import "@fontsource-variable/anuphan";
+
+@import "@fontsource/ibm-plex-sans-thai";
+
+/* 3. ตั้งค่า Theme (นี่คือวิธีใหม่ของ v4) */
+@theme {
+  /* สร้างตัวแปร font-heading ใหม่ 
+     - ใส่ 'Anuphan Variable' ไว้ตัวแรกเพื่อให้ภาษาไทยแสดงผล
+     - ใส่ 'Helvetica', 'Arial' ตามหลัง (เผื่อเครื่องไหนไม่มี Anuphan หรือกรณีโหลดไม่ติด)
+
+  --font-heading: "Anuphan Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+  /* ถ้าอยากกำหนด font body ทั่วไปแยกต่างหาก (เช่นใช้ Inter หรือ Helvetica) 
+
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  --font-sans: "Atkinson", "Anuphan Variable", sans-serif;
+  
+  /* ถ้าอยากแยก Heading ให้ต่างหาก ก็ทำได้เช่นกัน */
+  --font-heading: "Atkinson", "Anuphan Variable", sans-serif;
+}
+
+/* 4. บังคับใช้กับ HTML tags (Optional แต่นิยมทำ) */
+@layer base {
+  /* สั่งให้ Heading ทุกระดับใช้ฟอนต์ที่เราเพิ่งสร้าง */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700; /* หรือปรับความหนาตามชอบ */
+  }
+  
+  /* ส่วนเนื้อหาทั่วไปให้ใช้ font-sans (Helvetica) */
+  body {
+    font-family: var(--font-sans);
+  }
+}
 :root {
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
+	--white: 255, 255, 255;
 	--black: 15, 18, 25;
+	--orange-light: 241, 97, 34;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
 	--gray-dark: 34, 41, 57;
 	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	--main-bg: rgba(var(--orange-light), 100%);
 	--box-shadow:
 		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%), 0 16px 32px
 		rgba(var(--gray), 33%);
@@ -31,7 +66,7 @@
 	font-display: swap;
 }
 body {
-	font-family: "Atkinson", sans-serif;
+	/* font-family: "Atkinson", sans-serif; */
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -44,7 +79,7 @@ body {
 	line-height: 1.7;
 }
 main {
-	width: 720px;
+	width: 850px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
@@ -56,7 +91,6 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
 	line-height: 1.2;
 }
 h1 {
@@ -78,12 +112,12 @@ strong,
 b {
 	font-weight: 700;
 }
-a {
+/* a {
 	color: var(--accent);
 }
 a:hover {
 	color: var(--accent);
-}
+} */
 p {
 	margin-bottom: 1em;
 }

@@ -1,86 +1,243 @@
 ---
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+import { getCollection } from "astro:content";
+import "../styles/global.css";
+type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {
+  title,
+  description,
+  date,
+  updatedDate,
+  heroImage,
+  lang, // <-- (2) ❗️ รับ 'lang' มาจาก Props
+  translationKey, // <-- (3) ❗️ รับ 'translationKey' มาจาก Props
+} = Astro.props;
+
+// (4) ❗️ โลจิกค้นหาโพสต์คู่แปล
+let translatedPost = null;
+if (translationKey) {
+  const allPosts = await getCollection("blog");
+  translatedPost = allPosts.find(
+    (post) =>
+      post.data.lang !== lang && post.data.translationKey === translationKey
+  );
+}
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      main {
+        width: calc(100% - 2em);
+        max-width: 100%;
+        margin: 0;
+      }
+      .hero-image {
+        width: 100%;
+      }
+      .hero-image img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+      }
+      .prose {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: auto;
+        padding: 1em;
+        color: rgb(var(--gray-dark));
+      }
+      .title {
+        margin-bottom: 1em;
+        padding: 1em 0;
+        text-align: center;
+        line-height: 1;
+      }
+      .title h1 {
+        margin: 0 0 0.5em 0;
+      }
+      .date {
+        margin-bottom: 0.5em;
+        color: rgb(var(--gray));
+      }
+      .last-updated-on {
+        font-style: italic;
+      }
+      /* (1) เลือก <p> ที่มีแค่ <a><img></a> อยู่ข้างใน */
+      .prose p:has(> a:only-child > img:only-child) {
+        display: contents; /* 👈 (สำคัญ) สั่งให้ <p> "สลายตัว" ไป */
+      }
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+      /* (2) จัดการกับ <a> (ลิงก์) โดยตรง */
+      .prose p:has(> a:only-child > img:only-child) + p a > img,
+      .prose p:has(> a:only-child > img:only-child) > a > img {
+        display: inline-block; /* 👈 ทำให้มันเรียงเป็น Gallery */
+        width: 200px; /* 👈 (ปรับได้) ขนาดพื้นฐาน */
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 8px;
+        margin: 0.5rem; /* 👈 (ปรับได้) ระยะห่าง */
+      }
+
+      /* (3) (ทางเลือก) ถ้าอยากให้มันเป็น Flex Grid ที่ยืดหยุ่น */
+
+      .prose p:has(> a:only-child > img:only-child) {
+        display: block;
+        flex: 1 1 200px;
+      }
+
+      .prose p:has(> a:only-child > img:only-child) > a,
+      .prose p:has(> a:only-child > img:only-child) > a > img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        cursor: pointer;
+      }
+      a.glightbox img {
+        cursor: pointer !important;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article>
+        <div class="hero-image">
+          {
+            heroImage && (
+              <Image width={1020} height={510} src={heroImage} alt="" />
+            )
+          }
+        </div>
+        <div class="prose">
+          <div class="title">
+            <div class="date">
+              <FormattedDate date={date} />
+              {
+                updatedDate && (
+                  <div class="last-updated-on">
+                    Last updated on <FormattedDate date={updatedDate} />
+                  </div>
+                )
+              }
+            </div>
+            <h1>{title}</h1>
+            <hr />
+          </div>
+
+          <slot />
+        </div>
+
+        {
+          translatedPost && (
+            <div
+              class="prose"
+              style="text-align: center; margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem;"
+            >
+              {(() => {
+                const slug = translatedPost.slug.split("/").pop();
+                const translatedLang = translatedPost.data.lang;
+                return (
+                  <a href={`/${translatedLang}/blog/${slug}/`}>
+                    {translatedLang === "en"
+                      ? "Read in English"
+                      : "อ่านภาษาไทย"}
+                  </a>
+                );
+              })()}
+            </div>
+          )
+        }
+      </article>
+    </main>
+    <Footer />
+    <script
+      src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"
+    ></script>
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        // (A) หาพื้นที่เนื้อหา
+        const contentArea = document.querySelector(".prose");
+        if (!contentArea) {
+          console.warn("Auto-gallery/Lightbox: .prose area not found.");
+          return; // ถ้าหา .prose ไม่เจอ ก็หยุดทำงาน
+        }
+
+        // --- (B) ส่วนของ GLightbox ---
+        const allLinks = contentArea.querySelectorAll("a");
+        allLinks.forEach((link) => {
+          const firstChild = link.firstElementChild;
+          // ถ้าลูกคนแรกของลิงก์คือ <img>
+          if (firstChild && firstChild.tagName === "IMG") {
+            link.classList.add("glightbox");
+            link.setAttribute("data-gallery", "blog-post-gallery");
+          }
+        });
+
+        // สั่ง GLightbox ให้เริ่มทำงาน
+        const lightbox = GLightbox({
+          selector: ".glightbox",
+          touchNavigation: true,
+          loop: true,
+        });
+
+        // --- (C) ส่วนของ Auto-Gallery ---
+
+        // ค้นหา <ul> ทั้งหมดในเนื้อหา
+        const allLists = contentArea.querySelectorAll("ul");
+
+        allLists.forEach((list, listIndex) => {
+          // ค้นหา <li> ที่เป็น "ลูกโดยตรง" เท่านั้น
+          const items = Array.from(list.children).filter(
+            (node) => node.tagName === "LI"
+          );
+
+          if (items.length === 0) return; // ถ้าเป็น list ว่าง ก็ข้ามไป
+
+          let isGallery = true; // ตั้งธงไว้ก่อนว่า "น่าจะใช่"
+
+          for (const item of items) {
+            // เช็กข้อที่ 1: มีรูปหรือไม่?
+            const hasImage = item.querySelector("img");
+
+            // เช็กข้อที่ 2: มีตัวหนังสือหรือไม่? (ที่ไม่ใช่แค่เว้นวรรค)
+            const hasText = item.textContent.trim().length > 0;
+
+            // ถ้า <li> อันนี้ดัน "มีตัวหนังสือ" หรือ "ไม่มีรูปภาพ"
+            // ให้ถือว่า <ul> นี้ "ไม่ใช่ Gallery"
+            if (hasText || !hasImage) {
+              isGallery = false;
+              // (DEBUG) เปิด Console ดูว่าอันไหนที่ทำให้พัง
+              // console.log('List ' + listIndex + ' failed. Item:', item, 'HasText:', hasText, 'HasImage:', !!hasImage);
+              break; // หยุดเช็ก <li> ที่เหลือใน <ul> นี้
+            }
+          }
+
+          // ถ้าเช็ก <li> ครบทุกอันแล้วธงยังเป็น true
+          if (isGallery) {
+            // แปะคลาส 'auto-gallery' ได้เลย!
+            list.classList.add("auto-gallery");
+
+            // (DEBUG) นี่คือ Log ที่เราอยากเห็น
+            console.log("Auto-Gallery Applied to:", list);
+          }
+        }); // <-- (วงเล็บปิดของ allLists.forEach)
+      }); // <-- (❗️ วงเล็บปิดของ DOMContentLoaded ที่น่าจะหายไป)
+    </script>
+  </body>
 </html>

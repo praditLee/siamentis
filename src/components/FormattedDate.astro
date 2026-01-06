@@ -1,17 +1,20 @@
 ---
 interface Props {
-	date: Date;
+  date: Date | undefined; // (1) ยอมรับค่า undefined
 }
 
 const { date } = Astro.props;
+
+// (2) ถ้า date ไม่มีค่า (undefined) ก็ไม่ต้องแสดงผลอะไรเลย
+if (!date) return null;
 ---
 
 <time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+  {
+    date.toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  }
 </time>

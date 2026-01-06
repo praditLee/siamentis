@@ -1,0 +1,90 @@
+---
+// src/components/ProjectCard.astro
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+interface Props {
+  title: string;
+  description: string;
+  images: string[]; // รับ array ของ path รูปภาพ
+  link?: string;
+}
+
+const { title, description, images, link } = Astro.props;
+---
+
+<article class="flex flex-col h-full group">
+  <div
+    class="swiper project-swiper w-full rounded-lg overflow-hidden bg-gray-100 mb-6 relative aspect-[4/3]"
+  >
+    <div class="swiper-wrapper">
+      {
+        images.map((img) => (
+          <div class="swiper-slide">
+            <img
+              src={img}
+              alt={title}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="swiper-button-prev !text-white/80 after:!text-xl !w-8 !h-8 bg-black/30 rounded-full hover:bg-black/50 transition-all opacity-0 group-hover:opacity-100"
+    >
+    </div>
+    <div
+      class="swiper-button-next !text-white/80 after:!text-xl !w-8 !h-8 bg-black/30 rounded-full hover:bg-black/50 transition-all opacity-0 group-hover:opacity-100"
+    >
+    </div>
+
+    <div class="swiper-pagination !bottom-2"></div>
+  </div>
+
+  <div class="flex flex-col flex-grow">
+    <h4
+      class="text-md md:text-lg font-bold text-[#f16122] mb-3 font-heading leading-tight"
+    >
+      <a href={link || "#"} class="hover:underline">
+        {title}
+      </a>
+    </h4>
+
+    <p
+      class="text-gray-600 font-sans leading-relaxed text-sm md:text-base mb-4"
+    >
+      {description}
+    </p>
+
+    {
+      link && (
+        <a
+          href={link}
+          class="mt-auto inline-flex items-center text-[#f16122] hover:translate-x-1 transition-transform font-bold text-sm"
+        >
+          Read more <span class="ml-1">→</span>
+        </a>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  /* ปรับแต่งจุด Pagination ให้เป็นสีเทา/ส้ม ตามธีม */
+  :global(.project-swiper .swiper-pagination-bullet) {
+    background: white;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+  }
+  :global(.project-swiper .swiper-pagination-bullet-active) {
+    background: #f16122;
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+  }
+</style>

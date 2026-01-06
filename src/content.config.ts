@@ -1,19 +1,26 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
-	// Load Markdown and MDX files in the `src/content/blog/` directory.
-	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
-	// Type-check frontmatter using a schema
-	schema: ({ image }) =>
-		z.object({
-			title: z.string(),
-			description: z.string(),
-			// Transform string to Date object
-			pubDate: z.coerce.date(),
-			updatedDate: z.coerce.date().optional(),
-			heroImage: image().optional(),
-		}),
+    
+    // Type-check frontmatter using a schema
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            
+            // --- (FIX 1) แก้ไขตามไฟล์ .md ของคุณ ---
+            description: z.string().optional(), // <-- ทำให้เป็น .optional() (เพราะบางไฟล์ไม่มี)
+            date: z.coerce.date(), // <-- (สำคัญ) เปลี่ยนจาก pubDate เป็น date
+            
+            // --- (FIX 2) เพิ่ม Field ที่เราคุยกัน ---
+            categories: z.array(z.string()).optional(), // <-- ทำให้เป็น Array (และ .optional())
+            lang: z.enum(['en', 'th']),
+            translationKey: z.string().optional(),
+
+            // --- (KEEP) เก็บของเดิมจาก Template ไว้ (และทำให้ .optional() เพื่อความปลอดภัย) ---
+            updatedDate: z.coerce.date().optional(),
+            heroImage: image().optional(),
+            coverImage: z.string().optional(), // (เผื่อไฟล์ .md ของคุณมี field นี้)
+        }),
 });
 
 export const collections = { blog };

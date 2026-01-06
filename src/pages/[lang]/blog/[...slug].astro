@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import BlogPostLayout from "../../../layouts/BlogPost.astro"; // (ตรวจสอบ Path นี้)
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog");
+
+  return allPosts.map((post) => {
+    // ตอนนี้ post.slug จะมีค่า (เช่น 'en/my-post')
+    // และ post.data จะมีค่า (เช่น { lang: 'en', ... })
+
+    return {
+      params: {
+        lang: post.data.lang, // 👈 กลับมาใช้ .data
+        slug: post.slug.split("/").pop(), // 👈 กลับมาใช้ .slug (และเอาเฉพาะส่วนท้าย)
+      },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogPostLayout {...post.data}>
+  <Content />
+</BlogPostLayout>

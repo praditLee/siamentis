@@ -1,0 +1,148 @@
+---
+import BaseHead from "../components/BaseHead.astro"; //
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+// รับ Frontmatter จากไฟล์ .md
+const props = Astro.props;
+const frontmatter = props.frontmatter || props;
+
+// ดึงตัวแปรออกมา (ถ้าไม่มี heroImage ให้เป็นค่าว่าง)
+const title = frontmatter.title || props.title;
+const description = frontmatter.description || props.description;
+const heroImage = frontmatter.heroImage || props.heroImage;
+const lang = frontmatter.lang || props.lang || "en";
+---
+
+<html lang={lang || "en"}>
+  <head>
+    <BaseHead title={title} description={description} />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+
+    <style>
+      /* (CSS สำหรับ Auto-Gallery และ Cursor) */
+      .prose ul.auto-gallery {
+        list-style: none !important;
+        padding-left: 0 !important;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .prose ul.auto-gallery > li {
+        flex: 1 1 200px;
+        margin-bottom: 0 !important;
+        padding-left: 0 !important;
+        list-style-type: none !important;
+      }
+      .prose ul.auto-gallery > li::marker {
+        display: none !important;
+        content: "" !important;
+      }
+      .prose ul.auto-gallery > li > p {
+        margin: 0;
+      }
+      .prose ul.auto-gallery > li > a > img,
+      .prose ul.auto-gallery > li > p > a > img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      a.glightbox img {
+        cursor: pointer !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+
+    <header
+      class="relative w-full h-[50vh] min-h-[400px] overflow-hidden bg-black rounded-none"
+    >
+      {
+        heroImage ? (
+          <img
+            src={heroImage}
+            alt={title}
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <div class="absolute inset-0 bg-gray-800" />
+        )
+      }
+
+      <div class="absolute inset-0 bg-black/50"></div>
+
+      <div class="absolute inset-0 z-10 flex flex-col justify-end pb-12 px-6">
+        <div class="w-full mx-auto max-w-3xl">
+          <h1
+            class="text-4xl font-bold text-white md:text-6xl drop-shadow-lg text-left"
+          >
+            {title}
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <main class="py-12">
+      <article class="prose prose-lg mx-auto max-w-3xl px-6">
+        <slot />
+      </article>
+    </main>
+
+    <Footer />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"
+    ></script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const contentArea = document.querySelector(".prose");
+        if (!contentArea) return;
+
+        // (GLightbox)
+        const allLinks = contentArea.querySelectorAll("a");
+        allLinks.forEach((link) => {
+          const firstChild = link.firstElementChild;
+          if (firstChild && firstChild.tagName === "IMG") {
+            link.classList.add("glightbox");
+            link.setAttribute("data-gallery", "blog-post-gallery");
+          }
+        });
+        const lightbox = GLightbox({
+          selector: ".glightbox",
+          touchNavigation: true,
+          loop: true,
+        });
+
+        // (Auto-Gallery)
+        const allLists = contentArea.querySelectorAll("ul");
+        allLists.forEach((list) => {
+          const items = Array.from(list.children).filter(
+            (node) => node.tagName === "LI"
+          );
+          if (items.length === 0) return;
+          let isGallery = true;
+          for (const item of items) {
+            const hasImage = item.querySelector("img");
+            const hasText = item.textContent.trim().length > 0;
+            if (hasText || !hasImage) {
+              isGallery = false;
+              break;
+            }
+          }
+          if (isGallery) {
+            list.classList.add("auto-gallery");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

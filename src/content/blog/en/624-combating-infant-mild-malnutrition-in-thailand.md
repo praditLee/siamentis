@@ -1,0 +1,38 @@
+---
+title: '"624", combating infant mild malnutrition in Thailand'
+date: 2012-08-11
+categories:
+  - "social-change-campaigns"
+heroImage: "../_assets/624logo.jpg"
+translationKey: "624"
+lang: "en"
+---
+
+The "624" communication program was designed as an intervention to create an understanding for caregivers about the importance of nutrition, and to provide them with the knowledge about food preparation and proper feeding practices. The communication program was developed as a joint project between Siamentis and [Institute of Nutrition, Mahidol University](http://www.inmu.mahidol.ac.th/). The design of communication program was funded by the [Foundation of Thai Health Promotion.](http://www.thaihealth.or.th/)
+
+The problem of infant mild malnutrition in Thailand has been confirmed by a number of research projects in recent years. The Fifth National Survey on Food and Nutrition Status in 2003 found just over half (55.2 per cent) of all children were properly fed with food suitable to their age range and development.? Mild nutrition is a cause for concern because of its effect on brain development and intellectual capacity of children.
+
+Approximately 2.5 million infants aged under 36 months are being looked after by caregivers in their homes. The state plays a relatively minor role in looking after infants this age.? Only 64,000 infants aged under 36 months are being taken care of in state facilities, as opposed to the majority of children reaching school age.
+
+Currently, 92.2% of pregnant women receive at least 4 antenatal care visits. Most antenatal care is provided in hospital and/or health centers by medical and health personnel. "Antenatal care services are provided at government hospitals free of charge." It could be said that the district public system is the sole service provider in rural Thailand.
+
+At present, Ministry of Public Health provides education for new mothers as part of the safe motherhood program. All pregnant women are given a booklet to record their antenatal and postpaptum care. The booklet also provides pertinent information about caring of an infant upto the age of six. District health offices also hold class for mothers from time to time during their postpatum visits.
+
+Through rapid assessment of the situation done by district and provincial health officers, nutritionists, and subsequent research, we found that current education programs failed to reach the real caregivers.
+
+In reality, most infants are being taken care of by materal and paternal grandmothers, because the majority of mothers have to return to work soon after giving birth.
+
+Most grandmothers do not have education beyond elementary school. They prepare food according to established practices and local beliefs. Booklets given by the hospitals are of little use to caregivers because grandmothers do not understand the content.
+
+[![624 Project](/images/calendar624-v3-01-212x300.png)](/images/calendar624-v3-01.png)
+[![624 Project](/images/calendar624-v3-02-212x300.png)](/images/calendar624-v3-02.png)
+[![624 Project](/images/calendar624-v3-03-212x300.png)](/images/calendar624-v3-03.png)
+[![624 Project](/images/calendar624-v3-05-212x300.png)](/images/calendar624-v3-05.png)
+[![624 Project](/images/calendar624-v3-07-212x300.png)](/images/calendar624-v3-07.png)  
+[![624 Project](/images/calendar624-v3-08-212x300.png)](/images/calendar624-v3-08.png)
+
+The project team camp up with a means to create an understanding, motivate the real caregivers to adopt new ideas about food preparation and feeding practices.
+
+[![624 Project](/images/img_3371-150x150.jpg)](/images/img_3371.jpg)
+[![624 Project](/images/img_5863-150x150.jpg)](/images/img_5863.jpg)
+[![624 Project](/images/img_6199-150x150.jpg)](/images/img_6199.jpg)
