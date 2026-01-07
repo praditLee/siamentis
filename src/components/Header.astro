@@ -1,136 +1,262 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
-
-// (1) ❗️ ดึง URL ปัจจุบัน
-const { pathname } = Astro.url;
 import siamentisLogo from "../assets/siamentis_logo.svg";
-// (2) ตรวจสอบว่า Path เริ่มต้นด้วย '/th' หรือไม่
+
+// (1) ❗️ ดึงรายชื่อไฟล์ทั้งหมดใน src/pages มาเก็บไว้
+const allPages = import.meta.glob("../pages/**/*.{md,mdx,astro}");
+
+const { pathname } = Astro.url;
 const isThai = pathname.startsWith("/th");
 const currentLang = isThai ? "th" : "en";
 
-const isHome =
-  pathname === "/" ||
-  pathname === "/en" ||
-  pathname === "/en/" ||
-  pathname === "/th" ||
-  pathname === "/th/";
-
+// (2) ❗️ คำนวณ URL ปลายทาง (Target URL)
 let targetUrl = "";
 if (isThai) {
-  targetUrl = pathname.replace(/^\/th/, "/en"); // สลับ th -> en
+  targetUrl = pathname.replace(/^\/th/, "/en"); // th -> en
 } else {
-  // เช็คเผื่อกรณี URL ไม่มี /en นำหน้า (เช่นหน้า root)
   if (pathname.startsWith("/en")) {
-    targetUrl = pathname.replace(/^\/en/, "/th"); // สลับ en -> th
+    targetUrl = pathname.replace(/^\/en/, "/th"); // en -> th
   } else {
-    targetUrl = "/th" + pathname; // กรณีสุดวิสัย เติม /th ไปเลย
+    targetUrl = "/th" + pathname; // root -> /th
   }
 }
 
-// (3) กำหนด Path ของลิงก์ตามภาษา
-const blogPath = isThai ? "/th/blog" : "/en/blog";
-const aboutPath = isThai ? "/th/about" : "/en/about";
-// (เพิ่มลิงก์อื่นๆ ตามต้องการ)
----
+// (3) ❗️ ฟังก์ชันตรวจสอบว่ามีไฟล์สำหรับ URL นั้นจริงหรือไม่?
+function checkTargetExists(url: string) {
+  // ลบ trailing slash ออกก่อนเปรียบเทียบ (เช่น /th/about/ -> /th/about)
+  const cleanUrl = url.replace(/\/$/, "");
 
-<header>
-  <nav class="max-w-6xl mx-auto">
-    <a href={`/${currentLang}/`} class="flex items-center">
-      <img
-        src={siamentisLogo.src}
-        alt={SITE_TITLE}
-        class="h-auto w-[150px] object-contain"
-      />
-    </a>
-    <div class="internal-links">
-      <!-- <HeaderLink href={`/${currentLang}/blog`}>Blog</HeaderLink> -->
-      <HeaderLink href={`/${currentLang}/about`}>About</HeaderLink>
-      {
-        !isHome && (
-          <a
-            href={targetUrl}
-            class="language-switcher inline-flex items-center px-3 py-1 ml-4"
-          >
-            <span class="mr-1">{isThai ? "🇺🇸" : "🇹🇭"}</span>
-            <span class="text-sm font-semibold">{isThai ? "EN" : "TH"}</span>
-          </a>
-        )
-      }
-    </div>
-    <!-- <div class="social-links">
-      <a href="https://m.webtoo.ls/@astro" target="_blank">
-        <span class="sr-only">Follow Astro on Mastodon</span>
-        <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-          ><path
-            fill="currentColor"
-            d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-          ></path></svg
-        >
-      </a>
-      <a href="https://twitter.com/astrodotbuild" target="_blank">
-        <span class="sr-only">Follow Astro on Twitter</span>
-        <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-          ><path
-            fill="currentColor"
-            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-          ></path></svg
-        >
-      </a>
-      <a href="https://github.com/withastro/astro" target="_blank">
-        <span class="sr-only">Go to Astro's GitHub repo</span>
-        <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-          ><path
-            fill="currentColor"
-            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-          ></path></svg
-        >
-      </a>
-    </div> -->
-  </nav>
-</header>
-<style>
-  header {
-    margin: 0;
-    padding: 0 1em;
-    background: white;
-    box-shadow: 0 2px 8px rgba(var(--black), 5%);
-  }
-  h2 {
-    margin: 0;
-    font-size: 1em;
-  }
+  // วนลูปเช็คไฟล์ทั้งหมดที่เรา scan มา
+  for (const path in allPages) {
+    // แปลง path ของไฟล์ (เช่น ../pages/th/about.md) ให้เป็น URL (เช่น /th/about)
+    let pageUrl = path
+      .replace("../pages", "") // ลบ path ข้างหน้า
+      .replace(/\.(astro|mdx|md)$/, "") // ลบนามสกุลไฟล์
+      .replace(/\/index$/, ""); // ถ้าเป็น index ให้ลบออก (เช่น /th/index -> /th)
 
-  h2 a,
-  h2 a.active {
-    text-decoration: none;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  nav a {
-    padding: 1em 0.5em;
-    color: var(--black);
-    border-bottom: 4px solid transparent;
-    text-decoration: none;
-  }
-  nav a.active {
-    text-decoration: none;
-    border-bottom-color: var(--accent);
-  }
-  .language-switcher {
-    text-decoration: none;
-    color: #333;
-  }
-  .social-links,
-  .social-links a {
-    display: flex;
-  }
-  @media (max-width: 720px) {
-    .social-links {
-      display: none;
+    // ถ้า pageUrl ว่างเปล่า แสดงว่าเป็นหน้า root (/)
+    if (pageUrl === "") pageUrl = "/";
+
+    // เปรียบเทียบ
+    if (pageUrl === cleanUrl) {
+      return true; // เจอคู่!
     }
   }
-</style>
+  return false; // ไม่เจอ
+}
+
+// (4) ❗️ ตัวแปรตัดสินใจ: จะโชว์ปุ่มไหม?
+// เงื่อนไข: ต้องไม่ใช่หน้า Home (หรือถ้า Home ต้องมีไฟล์) AND ปลายทางต้องมีไฟล์อยู่จริง
+const hasTranslation = checkTargetExists(targetUrl);
+
+// สร้างข้อมูลเมนูย่อย (จะได้แก้ที่เดียวแล้วเปลี่ยนทั้ง Mobile/Desktop)
+const projectLinks = [
+  {
+    name: "Samsung Solve for Tomorrow",
+    href: `/${currentLang}/samsung-solve-for-tomorrow`,
+  },
+  {
+    name: "Samsung Smart Learning Center",
+    href: `/${currentLang}/samsung-smart-learning-center`,
+  },
+  {
+    name: "Samsung Career Discovery",
+    href: `/${currentLang}/samsung-career-discovery`,
+  },
+  {
+    name: "Samsung Future Career Bootcamp",
+    href: `/${currentLang}/samsung-future-career-bootcamp`,
+  },
+  {
+    name: "Bridgestone B-Active",
+    href: `/${currentLang}/bridgestone-b-active`,
+  },
+];
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="container max-w-6xl mx-auto px-6 py-3">
+    <div class="flex items-center justify-between">
+      <a href={`/${currentLang}/`} class="flex items-center">
+        <img
+          src={siamentisLogo.src}
+          alt={SITE_TITLE}
+          class="h-auto w-[150px] object-contain !rounded-none"
+        />
+      </a>
+      <button
+        id="menu-btn"
+        class="block md:hidden text-gray-700 focus:outline-none p-2"
+        aria-label="Toggle Menu"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <div id="menu-items" class="hidden md:flex items-center space-x-6">
+        <!-- <HeaderLink href={`/${currentLang}/blog`}>Blog</HeaderLink> -->
+        <HeaderLink href={`/${currentLang}/services`}>Services</HeaderLink>
+        <HeaderLink href={`/${currentLang}/about`}>About</HeaderLink>
+
+        <div class="relative group">
+          <button
+            class="flex items-center font-medium text-gray-700 hover:text-orange-500 transition-colors py-2"
+          >
+            Past Projects
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 ml-1 transition-transform group-hover:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+
+          <div
+            class="absolute left-0 top-full pt-2 w-64 hidden group-hover:block hover:block z-50"
+          >
+            <div
+              class="bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden py-1"
+            >
+              {
+                projectLinks.map((project) => (
+                  <a
+                    href={project.href}
+                    class="block px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                  >
+                    {project.name}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+        {
+          hasTranslation && (
+            <a
+              href={targetUrl}
+              class="language-switcher inline-flex items-center px-3 py-1  hover:bg-gray-100 transition-colors ml-4"
+              title={isThai ? "Switch to English" : "สลับเป็นภาษาไทย"}
+            >
+              <span class="mr-1">{isThai ? "🇺🇸" : "🇹🇭"}</span>
+              <span class="text-sm font-semibold">{isThai ? "EN" : "TH"}</span>
+            </a>
+          )
+        }
+      </div>
+    </div>
+
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden mt-4 pb-4 border-t border-gray-100"
+    >
+      <div class="flex flex-col space-y-4 pt-4 text-center">
+        <HeaderLink href={`/${currentLang}/blog`}>Blog</HeaderLink>
+        <HeaderLink href={`/${currentLang}/about`}>About</HeaderLink>
+
+        <div class="flex flex-col items-center w-full">
+          <button
+            id="mobile-submenu-btn"
+            class="flex items-center font-medium text-gray-700 py-2"
+          >
+            Past Projects
+            <svg
+              id="mobile-arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 ml-1 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+
+          <div
+            id="mobile-submenu-list"
+            class="hidden flex-col items-center w-full bg-gray-50 mt-2 py-2 space-y-2 rounded-lg"
+          >
+            {
+              projectLinks.map((project) => (
+                <a
+                  href={project.href}
+                  class="block w-full py-2 text-sm text-gray-600 hover:text-orange-600"
+                >
+                  {project.name}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+        {
+          hasTranslation && (
+            <div class="flex justify-center">
+              <a
+                href={targetUrl}
+                class="language-switcher inline-flex items-center px-3 py-1 rounded-full hover:bg-gray-100 transition-colors"
+                title={isThai ? "Switch to English" : "สลับเป็นภาษาไทย"}
+              >
+                <span class="mr-1">{isThai ? "🇺🇸" : "🇹🇭"}</span>
+                <span class="text-sm font-semibold">
+                  {isThai ? "EN" : "TH"}
+                </span>
+              </a>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Script สำหรับ Toggle เมนู
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      // สลับ class 'hidden'
+      // ถ้ามี hidden อยู่ -> เอาออก (แสดงเมนู)
+      // ถ้าไม่มี hidden -> ใส่เข้าไป (ซ่อนเมนู)
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+
+  // Script ใหม่ (Toggle Mobile Submenu)
+  const subMenuBtn = document.getElementById("mobile-submenu-btn");
+  const subMenuList = document.getElementById("mobile-submenu-list");
+  const mobileArrow = document.getElementById("mobile-arrow");
+
+  if (subMenuBtn && subMenuList && mobileArrow) {
+    subMenuBtn.addEventListener("click", () => {
+      // 1. สลับแสดง/ซ่อน รายการ
+      subMenuList.classList.toggle("hidden");
+      subMenuList.classList.toggle("flex");
+
+      // 2. หมุนลูกศร
+      mobileArrow.classList.toggle("rotate-180");
+    });
+  }
+</script>

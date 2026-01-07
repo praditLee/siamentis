@@ -40,9 +40,10 @@ const { slides } = Astro.props;
                   {slide.title}
                 </h2>
 
-                <p class="text-lg text-gray-200 mb-8 font-sans leading-relaxed">
-                  {slide.description}
-                </p>
+                <div
+                  class="text-lg text-gray-200 mb-8 font-sans leading-relaxed prose prose-invert prose-p:text-gray-200 prose-a:text-orange-400"
+                  set:html={slide.description}
+                />
 
                 {slide.link && (
                   <a
@@ -73,31 +74,44 @@ const { slides } = Astro.props;
       }
     </div>
 
-    <div class="swiper-pagination !bottom-8"></div>
-    <div
-      class="swiper-button-prev !hidden md:!flex !text-white/50 hover:!text-white after:!text-2xl"
-    >
-    </div>
-    <div
-      class="swiper-button-next !hidden md:!flex !text-white/50 hover:!text-white after:!text-2xl"
-    >
-    </div>
+    {
+      slides.length > 1 && (
+        <>
+          <div class="swiper-pagination !bottom-8" />
+          <div class="swiper-button-prev !hidden md:!flex !text-white/50 hover:!text-white after:!text-2xl" />
+          <div class="swiper-button-next !hidden md:!flex !text-white/50 hover:!text-white after:!text-2xl" />
+        </>
+      )
+    }
   </div>
 </div>
 
 <script>
   import Swiper from "swiper";
   import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
+  // ตรวจสอบจำนวน Slide จาก DOM จริง
+  const sliderEl = document.querySelector(".hero-swiper");
+  const slidesCount = sliderEl
+    ? sliderEl.querySelectorAll(".swiper-slide").length
+    : 0;
+
+  // ถ้ามีรูปเดียว ให้ isLoop เป็น false
+  const isMultiple = slidesCount > 1;
 
   const swiper = new Swiper(".hero-swiper", {
     modules: [Autoplay, Pagination, Navigation, EffectFade],
-    loop: true,
+    loop: isMultiple,
+    autoplay: isMultiple
+      ? {
+          delay: 5000,
+          disableOnInteraction: false,
+        }
+      : false,
+    // ถ้ามีรูปเดียว ไม่ต้องให้ใช้นิ้วปัด
+    allowTouchMove: isMultiple,
     effect: "fade",
     fadeEffect: { crossFade: true },
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
+
     pagination: {
       el: ".swiper-pagination",
       clickable: true,

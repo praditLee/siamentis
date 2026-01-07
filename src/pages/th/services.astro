@@ -1,0 +1,192 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { SITE_DESCRIPTION } from "../../consts";
+import HeroSlider from "../../components/HeroSlider.astro";
+
+// เตรียมข้อมูล Slide
+const mySlides = [
+  {
+    image: "/images/2P6A5357_siamentis.jpg",
+    description: `
+    <p>เรามีบริการหลากหลายที่เหมาะกับทั้งองค์กรและบุคคล ซึ่งได้อธิบายสั้นๆ ไว้ในหัวข้อด้านล่าง</p>
+    <p>แต่ถ้ามีคำถามหรือข้อสงสัย กรุณาติดต่อเรา เพราะในการพัฒนาวิธีการแก้ปัญหา เราจะทำงานอย่างใกล้ชิดกับลูกค้า เพื่อให้ได้ Solution ที่ตอบโจทย์ความต้องการอันแตกต่างกันของลูกค้า บางปัญหาอาจต้องการบริการเพียง 1-2 ประเภท ในขณะที่บางปัญหาอาจต้องการวิธีการที่ไม่เคยมีที่ไหนมาก่อน</p>
+    `,
+  },
+];
+---
+
+<!doctype html>
+<html lang="th">
+  <head>
+    <BaseHead title="บริการของเรา" description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <HeroSlider slides={mySlides} />
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10 mt-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">
+          Instructional Design
+        </h2>
+
+        <div class="md:col-start-3 md:row-start-1 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/2P6A5435_resize-1024x682.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            การดีไซน์กระบวนการจัดการเรียนรู้ของเราสามารถทำได้ในหลายรูปแบบ
+            เราออกแบบได้ทั้งหลักสูตรเฉพาะเรื่องสำหรับผู้เรียนเฉพาะกลุ่ม
+            หลักสูตรการจัดการเรียนการสอนสำหรับโรงเรียน หรือแม้แต่ Camp หรือ
+            Workshop ซึ่งกระบวนการเรียนรู้เหล่านี้ อาจใช้เวลาเรียนแค่ 1 ชั่วโมง
+            หรือเป็นกิจกรรมการเรียนรู้ที่ยาวนานต่อเนื่องตลอดทั้งปีก็ได้
+          </p>
+          <p>
+            ไม่ว่าจะเป็นเนื้อหาเรื่องของ Computer Science ชีววิทยา
+            ประเด็นทางสังคมและความเป็นพลเมือง จนถึง
+            เรื่องของการสร้างสรรค์นวัตกรรม การสื่อสาร หรือ สุขภาวะ
+            เราก็ได้สร้างสรรค์ประสบการณ์การเรียนรู้มาแล้วทุกหัวข้อ
+          </p>
+          <p>
+            เราได้ทำงานกับเยาวชน ครู มาอย่างต่อเนื่องเป็นเวลาเกือบ 10 ปี
+            แต่ก็ยังได้ดีไซน์กระบวนการจัดการเรียนรู้นอกห้องเรียนให้กับคนหลากหลายวัย
+            รวมถึงผู้สูงวัย อีกด้วย
+          </p>
+          <p>
+            ถ้าคุณต้องการให้ใครสักคน มาช่วยถ่ายทอดความรู้บางเรื่อง
+            ให้กับใครบางคน เราสามารถทำได้
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">
+          Multimedia Content Production
+        </h2>
+
+        <div class="md:col-start-1 md:row-end-3 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/8072738687579_siamentis-1024x767.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            เรามีทีมสร้างสรรค์และผลิตสื่อที่สามารถพัฒนาคอนเซปท์ สคริปท์
+            และผลิตผลงานคุณภาพ ไม่ว่าจะเป็นคลิปโฆษณาสนุกๆ 15 วินาทีบนเฟซบุ้ค
+            หรือ สารคดีเข้มข้นความยาวเกิน 20 นาที
+          </p>
+          <p>
+            ที่ผ่านมา เราผลิตบทเรียนสำหรับนักเรียนในรูปแบบวิดีโอ
+            สัมภาษณ์ผู้บริหาร
+            และสารคดีจำนวนมากให้กับทั้งสถาบันการศึกษาและองค์กรธุรกิจ
+          </p>
+          <p>
+            ไม่ว่าเนื้อหานั้นจะยากหรือซับซ้อนขนาดไหน
+            เราเชื่อว่ามีวิธีที่จะเล่าเรื่องนั้นๆ
+            ให้เข้าใจและน่าสนใจสำหรับผู้ฟังได้เสมอ
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">
+          Online Learning
+        </h2>
+
+        <div class="md:col-start-3 md:row-start-1 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/15_DSC02197-edited-1024x576.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            ด้วยความชำนาญในการออกแบบกระบวนการจัดการเรียนรู้
+            บวกกับความเชี่ยวชาญด้านการผลิตสื่อมัลติมีเดีย
+            เราสามารถสร้างสรรค์ประสบการณ์การเรียนออนไลน์ที่เรียนสนุกและบรรลุเป้าหมายการเรียนรู้
+            ให้กับนักเรียนและผู้เรียนทุกวัย
+          </p>
+          <p>
+            ท่ามกลางสถานการณ์โรคระบาดซึ่งทำให้เกิดการเรียนออนไลน์อย่างท่วมท้น
+            เราได้สร้างประสบการณ์ที่แตกต่าง ที่ผู้เรียนต่างกล่าวถึงว่า
+            “เรียนสนุกเหมือนดูรายการทีวี”
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">Facilitation</h2>
+
+        <div class="md:col-start-1 md:row-end-3 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/IMG_5320_siamentis-1024x682.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            เรามีบริการ Facilitation หลายรูปแบบ เช่น การจัด Workshop
+            โดยเราออกแบบทั้งเนื้อหา กระบวนการเรียนรู้ และทำหน้าที่เป็นกระบวนกร
+            (Facilitator) จัดการประชุมให้กับหน่วยงาน ทั้งภาคธุรกิจ
+            องค์กรไม่แสวงหากำไร หรือ จัดงานเสวนาและดำเนินรายการ เป็นต้น
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10 mb-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">
+          Research and Assessment
+        </h2>
+
+        <div class="md:col-start-3 md:row-start-1 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/IMG_9845_siamentis-1024x682.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            Sometimes, a set of facts to get everyone on the same page is
+            necessary. While numbers and figures are necessary in any research,
+            we specialize in qualitative, interview-driven research. We have
+            conducted research projects to determine a problem, gain insight
+            beyond observable behavior, assess effectiveness of intervention
+            programs, or even as simple as authoring a primer for a complex
+            subject.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,179 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import HeroSlider from "../../components/HeroSlider.astro";
+
+// เตรียมข้อมูล Slide
+const mySlides = [
+  {
+    image: "/images/2P6A5357_siamentis.jpg",
+    description: `
+    <p>We offer a wide range of services to businesses and individuals. Below is a brief description of services we currently offer but please contact us if you have any questions, what we have here is more of a suggestion of what we can do.</p>
+    <p>We always work closely with our clients to tailor a solution that is specific to their challenges: some might be interested in just one of our services while other projects could require a combination, or something entirely new.</p>
+    `,
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <HeroSlider slides={mySlides} />
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10 mt-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">
+          Instructional Design
+        </h2>
+
+        <div class="md:col-start-3 md:row-start-1 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/2P6A5435_resize-1024x682.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            Our instructional design services can produce many types of output.
+            We have designed individual lessons, school curricula, camps, and
+            workshops for our clients—ranging anywhere from an hour long to an
+            entire year’s worth of activities. Subject matter has spanned across
+            computer science, civics, and biology to innovation, communication,
+            and healthcare. While we specialize in teaching students and
+            teachers, we have also taught adults and elders outside of
+            classrooms as well.
+          </p>
+          <p>
+            If you need someone to teach somebody else something, we can do it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">
+          Multimedia Content Production
+        </h2>
+
+        <div class="md:col-start-1 md:row-end-3 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/8072738687579_siamentis-1024x767.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            Whether it is a 15-second ad for Facebook or a 20-minute
+            documentary, we produce our video content in-house—from developing
+            the concept, to scripting, filming, editing, and post-production. We
+            have produced video lessons for students, corporate interviews, and
+            many nonfiction pieces covering a wide variety of subjects for
+            universities and corporations.
+          </p>
+          <p>
+            No matter how difficult the subject, there is always a way to tell
+            an engaging story.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">
+          Online Learning
+        </h2>
+
+        <div class="md:col-start-3 md:row-start-1 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/15_DSC02197-edited-1024x576.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            Leveraging our video production expertise, we have been able to
+            create online learning experiences that learners describe as on-par
+            with scripted television programs. Our experience in instructional
+            design and production has made us perfectly positioned to produce
+            online learning experiences that are both informative and engaging
+            for both students and adults.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">Facilitation</h2>
+
+        <div class="md:col-start-1 md:row-end-3 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/IMG_5320_siamentis-1024x682.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            We offer various forms of facilitation for our clients. Most
+            commonly, our facilitation services are combined with instructional
+            design expertise to deliver a complete workshop experience where we
+            design its curriculum and facilitate the learning process. However,
+            we have also facilitated working sessions for businesses and
+            organizations, and moderated many discussion panels.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container max-w-6xl mx-auto px-4 py-12 md:py-10 mb-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6">
+        <h2 class="md:col-span-2 order-1 text-3xl font-bold">
+          Research and Assessment
+        </h2>
+
+        <div class="md:col-start-3 md:row-start-1 md:row-span-2 order-2">
+          <div class="aspect-square overflow-hidden rounded-2xl">
+            <img
+              src="/images/IMG_9845_siamentis-1024x682.jpg"
+              class="w-full h-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-2 order-3 text-slate-600 leading-relaxed">
+          <p>
+            Sometimes, a set of facts to get everyone on the same page is
+            necessary. While numbers and figures are necessary in any research,
+            we specialize in qualitative, interview-driven research. We have
+            conducted research projects to determine a problem, gain insight
+            beyond observable behavior, assess effectiveness of intervention
+            programs, or even as simple as authoring a primer for a complex
+            subject.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </body>
+</html>

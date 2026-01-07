@@ -1,0 +1,27 @@
+---
+// src/components/Gallery.astro
+
+interface Props {
+  images: string[]; // รับค่าเข้ามาเป็น Array ของ Text
+}
+
+const { images } = Astro.props;
+---
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
+  {
+    images.map((imgSrc) => (
+      <a 
+        href={imgSrc} 
+        class="glightbox gallery-item block overflow-hidden rounded-lg"
+      >
+        <img 
+          src={imgSrc} 
+          alt={imgSrc.split('/').pop()} /* ดึงชื่อไฟล์มาเป็น alt อัตโนมัติ */
+          loading="lazy"
+          class="w-full h-full object-cover aspect-[3/2] hover:scale-105 transition-transform duration-500"
+        />
+      </a>
+    ))
+  }
+</div>
