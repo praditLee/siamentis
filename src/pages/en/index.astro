@@ -5,7 +5,7 @@ import Header from "../../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 import HeroSlider from "../../components/HeroSlider.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
-
+import LogoCarousel from "../../components/LogoCarousel.astro";
 // เตรียมข้อมูล Slide
 const mySlides = [
   {
@@ -112,6 +112,41 @@ const projects = [
     link: "/en/blog/624-combating-infant-mild-malnutrition-in-thailand/",
   },
 ];
+
+const partners = [
+  {
+    src: "/images/624logo.jpg",
+    alt: "624 project",
+    link: "/en/blog/624-combating-infant-mild-malnutrition-in-thailand/",
+  },
+  {
+    src: "/images/bactive3.webp",
+    alt: "Bridgestone B-Active",
+    link: "/en/bridgestone-b-active",
+  },
+  {
+    src: "/images/sfcb1-4.webp",
+    alt: "Samsung Future Career Bootcamp",
+    link: "/en/samsung-future-career-bootcamp",
+  },
+  {
+    src: "/images/scd1-3.webp",
+    alt: "Samsung Career Discovery",
+    link: "/en/samsung-career-discovery",
+  },
+  {
+    src: "/images/smart1-4.webp",
+    alt: "Samsung Smart Learning Center",
+    link: "/en/samsung-smart-learning-center",
+  },
+  {
+    src: "/images/SFT2023_kv.webp",
+    alt: "Samsung Solve for Tomorrow",
+    link: "/en/samsung-solve-for-tomorrow",
+  },
+
+  // ใส่ซ้ำๆ ให้ดูเยอะๆ ก็ได้ (Swiper จะ loop ให้เอง)
+];
 ---
 
 <!doctype html>
@@ -156,6 +191,9 @@ const projects = [
           What Kinds of Programs Are for Your Company?
         </h2>
       </div>
+    </section>
+    <section class="w-full py-12">
+      <LogoCarousel logos={partners} />
     </section>
     <Footer />
     <script>

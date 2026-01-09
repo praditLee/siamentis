@@ -166,3 +166,42 @@ hr {
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+
+/* 1. บังคับให้กล่องข้อความ "ลอย" อยู่ด้านล่างสุด ไม่ไปเบียดรูป */
+.glightbox-clean .gslide-description {
+  position: absolute !important; /* สั่งให้ลอย */
+  bottom: 0 !important;          /* ติดขอบล่าง */
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  
+  /* พื้นหลังสีดำโปร่งแสง */
+  background: rgba(0, 0, 0, 0.75) !important; 
+  padding: 15px 20px !important;
+  z-index: 99999 !important; /* อยู่บนสุดเสมอ */
+}
+
+/* 2. จัดตัวหนังสือข้างใน */
+.glightbox-clean .gslide-desc {
+  color: #ffffff !important;     /* สีขาว */
+  font-family: sans-serif !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  text-align: center !important; /* จัดกลาง */
+  margin-bottom: 0 !important;
+}
+
+/* 3. (สำคัญ) ล้างค่าเดิมที่อาจจะทำให้รูปถูกเบียด */
+.glightbox-clean .gslide-inner-content {
+  display: flex !important;
+  flex-direction: column !important; /* เรียงแนวตั้ง */
+  justify-content: center !important;
+}
+
+/* 4. แก้รูปภาพให้ขยายเต็มพื้นที่ (โดยไม่สนใจกล่องข้อความที่ลอยอยู่) */
+.glightbox-clean .gslide-image img {
+  max-height: 100vh !important; /* สูงเกือบเต็มจอ */
+  margin: auto !important;
+  object-fit: contain !important;
+}

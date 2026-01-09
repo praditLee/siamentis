@@ -17,18 +17,8 @@ const {
   updatedDate,
   heroImage,
   lang, // <-- (2) ❗️ รับ 'lang' มาจาก Props
-  translationKey, // <-- (3) ❗️ รับ 'translationKey' มาจาก Props
+  translationUrl,
 } = Astro.props;
-
-// (4) ❗️ โลจิกค้นหาโพสต์คู่แปล
-let translatedPost = null;
-if (translationKey) {
-  const allPosts = await getCollection("blog");
-  translatedPost = allPosts.find(
-    (post) =>
-      post.data.lang !== lang && post.data.translationKey === translationKey
-  );
-}
 ---
 
 <html lang="en">
@@ -113,7 +103,7 @@ if (translationKey) {
   </head>
 
   <body>
-    <Header />
+    <Header translationUrl={translationUrl} />
     <main>
       <article>
         <div class="hero-image">
@@ -125,6 +115,7 @@ if (translationKey) {
         </div>
         <div class="prose">
           <div class="title">
+            <h1 class="text-4xl">{title}</h1>
             <div class="date">
               <FormattedDate date={date} />
               {
@@ -135,33 +126,11 @@ if (translationKey) {
                 )
               }
             </div>
-            <h1>{title}</h1>
             <hr />
           </div>
 
           <slot />
         </div>
-
-        {
-          translatedPost && (
-            <div
-              class="prose"
-              style="text-align: center; margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem;"
-            >
-              {(() => {
-                const slug = translatedPost.slug.split("/").pop();
-                const translatedLang = translatedPost.data.lang;
-                return (
-                  <a href={`/${translatedLang}/blog/${slug}/`}>
-                    {translatedLang === "en"
-                      ? "Read in English"
-                      : "อ่านภาษาไทย"}
-                  </a>
-                );
-              })()}
-            </div>
-          )
-        }
       </article>
     </main>
     <Footer />
@@ -194,6 +163,8 @@ if (translationKey) {
           selector: ".glightbox",
           touchNavigation: true,
           loop: true,
+          descPosition: "ิbottom",
+          zoomable: true,
         });
 
         // --- (C) ส่วนของ Auto-Gallery ---

@@ -3,26 +3,25 @@ import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 import siamentisLogo from "../assets/siamentis_logo.svg";
 
-// (1) ❗️ ดึงรายชื่อไฟล์ทั้งหมดใน src/pages มาเก็บไว้
+const { translationUrl } = Astro.props;
 const allPages = import.meta.glob("../pages/**/*.{md,mdx,astro}");
-
 const { pathname } = Astro.url;
 const isThai = pathname.startsWith("/th");
 const currentLang = isThai ? "th" : "en";
 
-// (2) ❗️ คำนวณ URL ปลายทาง (Target URL)
-let targetUrl = "";
+// 3. คำนวณ URL แบบอัตโนมัติ (สำหรับหน้า Static)
+let autoTargetUrl = "";
 if (isThai) {
-  targetUrl = pathname.replace(/^\/th/, "/en"); // th -> en
+  autoTargetUrl = pathname.replace(/^\/th/, "/en");
 } else {
   if (pathname.startsWith("/en")) {
-    targetUrl = pathname.replace(/^\/en/, "/th"); // en -> th
+    autoTargetUrl = pathname.replace(/^\/en/, "/th");
   } else {
-    targetUrl = "/th" + pathname; // root -> /th
+    autoTargetUrl = "/th" + pathname;
   }
 }
 
-// (3) ❗️ ฟังก์ชันตรวจสอบว่ามีไฟล์สำหรับ URL นั้นจริงหรือไม่?
+// 4. ฟังก์ชันตรวจสอบว่ามีไฟล์สำหรับ URL นั้นจริงหรือไม่?
 function checkTargetExists(url: string) {
   // ลบ trailing slash ออกก่อนเปรียบเทียบ (เช่น /th/about/ -> /th/about)
   const cleanUrl = url.replace(/\/$/, "");
@@ -46,9 +45,17 @@ function checkTargetExists(url: string) {
   return false; // ไม่เจอ
 }
 
-// (4) ❗️ ตัวแปรตัดสินใจ: จะโชว์ปุ่มไหม?
-// เงื่อนไข: ต้องไม่ใช่หน้า Home (หรือถ้า Home ต้องมีไฟล์) AND ปลายทางต้องมีไฟล์อยู่จริง
-const hasTranslation = checkTargetExists(targetUrl);
+// 5. 🔥 ไฮไลท์: Logic ตัดสินใจ (Hybrid)
+let targetUrl = "";
+let hasTranslation = false;
+
+if (translationUrl) {
+  targetUrl = translationUrl;
+  hasTranslation = true; // ถ้าส่งมาแสดงว่ามีแน่นอน
+} else {
+  targetUrl = autoTargetUrl;
+  hasTranslation = checkTargetExists(targetUrl);
+}
 
 // สร้างข้อมูลเมนูย่อย (จะได้แก้ที่เดียวแล้วเปลี่ยนทั้ง Mobile/Desktop)
 const projectLinks = [
@@ -78,7 +85,7 @@ const projectLinks = [
 <header class="bg-white shadow-sm sticky top-0 z-50">
   <nav class="container max-w-6xl mx-auto px-6 py-3">
     <div class="flex items-center justify-between">
-      <a href={`/${currentLang}/`} class="flex items-center">
+      <a href="/" class="flex items-center">
         <img
           src={siamentisLogo.src}
           alt={SITE_TITLE}
@@ -105,10 +112,6 @@ const projectLinks = [
       </button>
 
       <div id="menu-items" class="hidden md:flex items-center space-x-6">
-        <!-- <HeaderLink href={`/${currentLang}/blog`}>Blog</HeaderLink> -->
-        <HeaderLink href={`/${currentLang}/services`}>Services</HeaderLink>
-        <HeaderLink href={`/${currentLang}/about`}>About</HeaderLink>
-
         <div class="relative group">
           <button
             class="flex items-center font-medium text-gray-700 hover:text-orange-500 transition-colors py-2"
@@ -148,6 +151,9 @@ const projectLinks = [
             </div>
           </div>
         </div>
+        <HeaderLink href={`/${currentLang}/services`}>Services</HeaderLink>
+        <HeaderLink href={`/${currentLang}/blog`}>Blog</HeaderLink>
+        <HeaderLink href={`/${currentLang}/about`}>About</HeaderLink>
         {
           hasTranslation && (
             <a

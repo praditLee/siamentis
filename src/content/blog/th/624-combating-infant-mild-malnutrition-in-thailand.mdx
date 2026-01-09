@@ -16,21 +16,31 @@ lang: "th"
 
 คณะทำงานจึงต้องหาช่องทางในการสื่อสาร เพื่อสร้างความเข้าใจและชักจูงให้ผู้เลี้ยงดูตัวจริงเหล่านี้ รับเอาความรู้ใหม่เกี่ยวกับการเตรียมอาหารและวิธีการเลี้ยงดูไปปฏิบัติ
 
-[![624 Project](/images/calendar624-v3-01-212x300.png)](/images/calendar624-v3-01.png)
-[![624 Project](/images/calendar624-v3-02-212x300.png)](/images/calendar624-v3-02.png)
-[![624 Project](/images/calendar624-v3-03-212x300.png)](/images/calendar624-v3-03.png)
-[![624 Project](/images/calendar624-v3-05-212x300.png)](/images/calendar624-v3-05.png)
-[![624 Project](/images/calendar624-v3-07-212x300.png)](/images/calendar624-v3-07.png)  
-[![624 Project](/images/calendar624-v3-08-212x300.png)](/images/calendar624-v3-08.png)
+import Gallery from '../../../components/Gallery.astro';
+
+export const myProjectImages2 = [
+"/images/calendar624-v3-01.png",
+"/images/calendar624-v3-02.png",
+"/images/calendar624-v3-03.png",
+"/images/calendar624-v3-05.png",
+"/images/calendar624-v3-07.png",
+"/images/calendar624-v3-08.png",
+];
+
+<Gallery images={myProjectImages2} />
+
 
 เราได้พัฒนาวัสดุสื่อสาร ตำรับอาหาร โดยความสนับสนุนทางวิชาการ จากสถาบันวิจัยโภชนาการ เพื่อให้ความรู้ด้านโภชนาการและสร้างแรงจูงใจแก่ผู้เลี้ยงดู รวมถึงการวางแผนการสื่อสารโครงการ วัสดุสื่อสารที่จัดทำขึ้น ได้ถูกนำไปทดสอบกับกลุ่มเป้าหมาย คือ ย่า ยาย ในภาคต่าง ๆ ทั่วประเทศ
 
-[![624 Project](/images/img_3371-150x150.jpg)](/images/img_3371.jpg)
-[![624 Project](/images/img_5863-150x150.jpg)](/images/img_5863.jpg)
-[![624 Project](/images/img_6199-150x150.jpg)](/images/img_6199.jpg)
-[![624 Project](/images/IMG_6422_150x150.jpg)](/images/IMG_6422.jpg)
-[![624 Project](/images/IMG_6369.jpg)](/images/IMG_6369.jpg)
-[![624 Project](/images/IMG_6351.jpg)](/images/IMG_6351.jpg)
-[![624 Project](/images/img_6193.jpg)](/images/IMG_6193.jpg)
-[![624 Project](/images/img_3177.jpg)](/images/IMG_3177.jpg)
-[![624 Project](/images/IMG_0129.jpg)](/images/IMG_0129.jpg)
+export const Images2 = [
+"/images/IMG_6422.jpg",
+"/images/IMG_6369.jpg",
+"/images/IMG_6351.jpg",
+"/images/IMG_0129.jpg",
+"/images/img_3371.jpg",
+"/images/img_5863.jpg",
+"/images/img_6199.jpg",
+];
+
+<Gallery images={Images2} />
+

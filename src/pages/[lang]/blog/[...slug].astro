@@ -8,21 +8,44 @@ export async function getStaticPaths() {
   return allPosts.map((post) => {
     // ตอนนี้ post.slug จะมีค่า (เช่น 'en/my-post')
     // และ post.data จะมีค่า (เช่น { lang: 'en', ... })
-
+    // สมมติ slug เป็น 'en/my-first-post' หรือ 'th/my-first-post'
+    const [lang, ...slugParts] = post.slug.split("/");
     return {
-      params: {
-        lang: post.data.lang, // 👈 กลับมาใช้ .data
-        slug: post.slug.split("/").pop(), // 👈 กลับมาใช้ .slug (และเอาเฉพาะส่วนท้าย)
-      },
-      props: { post },
+      params: { lang, slug: slugParts.join("/") || undefined },
+      props: post,
     };
   });
 }
 
-const { post } = Astro.props;
+const post = Astro.props;
 const { Content } = await post.render();
+const { lang } = Astro.params;
+// --- 🔥 ส่วนที่ต้องเพิ่ม: หาคู่ของมัน ---
+
+// 1. กำหนดภาษาตรงข้าม
+const otherLang = lang === "en" ? "th" : "en";
+
+// 2. ดึงบทความทั้งหมดมาเช็ค
+const allPosts = await getCollection("blog");
+
+// 3. หาว่ามีบทความที่มี slug เดียวกัน แต่อยู่คนละภาษาไหม
+// (สมมติว่าคุณตั้งชื่อไฟล์เหมือนกัน เช่น src/content/blog/en/post1.md และ src/content/blog/th/post1.md)
+const translatedPost = allPosts.find((p) => {
+  const [pLang, ...pSlugParts] = p.slug.split("/");
+  const pSlug = pSlugParts.join("/");
+
+  // เช็คว่าภาษาคือภาษาตรงข้าม AND ชื่อ slug (post1) ตรงกัน
+  return (
+    pLang === otherLang && pSlug === post.slug.split("/").slice(1).join("/")
+  );
+});
+
+// 4. ถ้าเจอ ให้สร้าง URL เตรียมส่งไป
+const translationLink = translatedPost
+  ? `/${otherLang}/blog/${translatedPost.slug.split("/").slice(1).join("/")}`
+  : null;
 ---
 
-<BlogPostLayout {...post.data}>
+<BlogPostLayout {...post.data} translationUrl={translationLink}>
   <Content />
 </BlogPostLayout>

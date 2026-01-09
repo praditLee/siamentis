@@ -1,0 +1,89 @@
+---
+import "swiper/css";
+
+interface Logo {
+  src: string;
+  alt: string;
+  link: string;
+}
+
+interface Props {
+  logos: Logo[];
+}
+
+const { logos } = Astro.props;
+---
+
+<div class="w-full py-12 overflow-hidden">
+  <div class="container mx-auto px-4">
+    <div class="swiper logo-swiper">
+      <div class="swiper-wrapper flex items-center">
+        {
+          logos.map((logo) => (
+            <div class="swiper-slide !w-auto px-8 md:px-12">
+              <a
+                href={logo.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block group p-4 relative"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  class="h-12 md:h-16 w-auto object-contain opacity-70 group-hover:opacity-100  transition-all duration-300 transform group-hover:scale-110 relative z-10"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import Swiper from "swiper";
+  import { Autoplay } from "swiper/modules";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    new Swiper(".logo-swiper", {
+      modules: [Autoplay],
+
+      // การตั้งค่า Loop แบบไหลลื่น (Ticker Effect)
+      loop: true,
+      speed: 3000, // ความเร็วในการเลื่อน (ยิ่งเลขเยอะ ยิ่งช้า)
+      allowTouchMove: true, // อนุญาตให้ใช้นิ้วปัดได้
+      slidesPerView: "auto", // ให้คำนวณความกว้างอัตโนมัติ
+
+      autoplay: {
+        delay: 0, // ไม่ต้องมีการหน่วงเวลา (เพื่อให้ไหลต่อเนื่อง)
+        disableOnInteraction: false, // ปัดแล้วไม่หยุดไหล
+        pauseOnMouseEnter: true, // (Optional) เอาเมาส์ชี้แล้วหยุด ให้คลิกง่ายขึ้น
+      },
+
+      // Breakpoints: กำหนดระยะห่างระหว่างโลโก้ในแต่ละหน้าจอ
+      breakpoints: {
+        0: {
+          spaceBetween: 20, // มือถือ
+        },
+        768: {
+          spaceBetween: 40, // Tablet
+        },
+        1024: {
+          spaceBetween: 60, // Desktop
+        },
+      },
+    });
+  });
+</script>
+
+<style>
+  /* 🔥 สำคัญมาก! 
+    บังคับให้ Animation เป็นเส้นตรง (Linear) 
+    ไม่งั้นมันจะมีความเร่ง (Ease-in-out) ทำให้ดูไม่เหมือน Ticker
+  */
+  :global(.logo-swiper .swiper-wrapper) {
+    transition-timing-function: linear;
+  }
+</style>

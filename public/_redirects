@@ -1,3 +1,12 @@
 # public/_redirects
 # ต้นทาง    ปลายทาง    รหัส(301=ถาวร, 302=ชั่วคราว)
 /         /en       301
+/a-journey-out-of-madness /en/blog/a-journey-out-of-madness 301
+/การเดินทางออกจากการเป็ /th/blog/a-journey-out-of-madness 301
+/origins-asia-pacific-business-narrative-conference /th/blog/origins-asia-pacific-business-narrative-conference/ 301
+/สื่อสาร-csr-ใช้เรื่องเล่าส /th/blog/สื่อสาร-csr-ใช้เรื่องเล่าส 301
+/บรีส-ป-ปลายเปลี่ยนโลก-โค /th/blog/บรีส-ป-ปลายเปลี่ยนโลก-โค 301
+/วันหนึ่งในชีวิตที่มหิ /th/blog/วันหนึ่งในชีวิตที่มหิ 301
+/กิจกรรม-csr-ครั้งใหญ่-รวม-600-หั /th/blog/กิจกรรม-csr-ครั้งใหญ่-รวม-600-หั 301
+/กิจกรรม-csr-เยาวชน-พาน้องท่ /th/blog/กิจกรรม-csr-เยาวชน-พาน้องท่ 301
+/กิจกรรม-csr-ส่งเสริมใจอาสา /th/blog/กิจกรรม-csr-ส่งเสริมใจอาสา 301

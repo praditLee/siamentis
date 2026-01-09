@@ -24,15 +24,30 @@ In reality, most infants are being taken care of by materal and paternal grandmo
 
 Most grandmothers do not have education beyond elementary school. They prepare food according to established practices and local beliefs. Booklets given by the hospitals are of little use to caregivers because grandmothers do not understand the content.
 
-[![624 Project](/images/calendar624-v3-01-212x300.png)](/images/calendar624-v3-01.png)
-[![624 Project](/images/calendar624-v3-02-212x300.png)](/images/calendar624-v3-02.png)
-[![624 Project](/images/calendar624-v3-03-212x300.png)](/images/calendar624-v3-03.png)
-[![624 Project](/images/calendar624-v3-05-212x300.png)](/images/calendar624-v3-05.png)
-[![624 Project](/images/calendar624-v3-07-212x300.png)](/images/calendar624-v3-07.png)  
-[![624 Project](/images/calendar624-v3-08-212x300.png)](/images/calendar624-v3-08.png)
+import Gallery from '../../../components/Gallery.astro';
+
+export const myProjectImages = [
+"/images/calendar624-v3-01.png",
+"/images/calendar624-v3-02.png",
+"/images/calendar624-v3-03.png",
+"/images/calendar624-v3-05.png",
+"/images/calendar624-v3-07.png",  
+"/images/calendar624-v3-08.png",
+];
+
+<Gallery images={myProjectImages} />
+
 
 The project team camp up with a means to create an understanding, motivate the real caregivers to adopt new ideas about food preparation and feeding practices.
 
-[![624 Project](/images/img_3371-150x150.jpg)](/images/img_3371.jpg)
-[![624 Project](/images/img_5863-150x150.jpg)](/images/img_5863.jpg)
-[![624 Project](/images/img_6199-150x150.jpg)](/images/img_6199.jpg)
+export const Images2 = [
+"/images/IMG_6422.jpg",
+"/images/IMG_6369.jpg",
+"/images/IMG_6351.jpg",
+"/images/IMG_0129.jpg",
+"/images/img_3371.jpg",
+"/images/img_5863.jpg",
+"/images/img_6199.jpg",
+];
+
+<Gallery images={Images2} />

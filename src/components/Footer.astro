@@ -36,8 +36,60 @@ const today = new Date();
         ></path></svg
       >
     </a>
+    <a
+      id="copy-email"
+      aria-label="Copy Email"
+      data-email="contact@siamentis.com"
+      class="group relative text-slate-500 hover:text-white transition-colors"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+      >
+        <path
+          fill="currentColor"
+          d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M22.5,12.5
+    l-6.5,5.2l-6.5-5.2c0-0.133,0-0.267,0-0.4c0-1.159,0.941-2.1,2.1-2.1h8.8c1.159,0,2.1,0.941,2.1,2.1
+    C22.5,12.233,22.5,12.367,22.5,12.5z M22.5,19.5c0,1.159-0.941,2.1-2.1,2.1h-8.8c-1.159,0-2.1-0.941-2.1-2.1
+    v-5.6l6.5,5.2l6.5-5.2V19.5z"
+        ></path>
+      </svg>
+      <span
+        id="copy-feedback"
+        class="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 bg-gray-800 text-white text-xs py-1 px-2 rounded transition-all"
+      >
+        Copied!
+      </span>
+    </a>
   </div>
 </footer>
+<script>
+  const btn = document.getElementById("copy-email");
+  const feedback = document.getElementById("copy-feedback");
+  const email = btn.getAttribute("data-email");
+
+  btn.addEventListener("click", () => {
+    // ใช้ Clipboard API ในการคัดลอกข้อความ
+    navigator.clipboard
+      .writeText(email)
+      .then(() => {
+        // แสดงข้อความ "Copied!"
+        feedback.classList.remove("scale-0");
+        feedback.classList.add("scale-100");
+
+        // ซ่อนข้อความหลังจากผ่านไป 2 วินาที
+        setTimeout(() => {
+          feedback.classList.remove("scale-100");
+          feedback.classList.add("scale-0");
+        }, 2000);
+      })
+      .catch((err) => {
+        console.error("ไม่สามารถคัดลอกได้:", err);
+      });
+  });
+</script>
 <style>
   footer {
     padding: 2em 1em 6em 1em;

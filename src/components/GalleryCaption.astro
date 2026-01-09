@@ -1,0 +1,44 @@
+---
+// src/components/GalleryCaption.astro
+
+// 1. สร้าง Interface เพื่อกำหนดโครงสร้างข้อมูลใหม่
+interface GalleryItem {
+  src: string;
+  caption?: string; // เครื่องหมาย ? แปลว่า มีหรือไม่มีก็ได้
+  alt?: string;
+}
+
+interface Props {
+  images: GalleryItem[]; // รับเป็น Array ของ Object แทน String
+}
+
+const { images } = Astro.props;
+---
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
+  {
+    images.map((item) => (
+      <a
+        href={item.src}
+        class="glightbox gallery-item block relative overflow-hidden rounded-lg group"
+        data-description={item.caption}
+      >
+        <img
+          src={item.src}
+          alt={item.alt || item.caption || "Gallery Image"}
+          loading="lazy"
+          class="w-full h-full object-cover aspect-[3/2] group-hover:scale-105 transition-transform duration-500"
+        />
+
+        {/* 🔥 ส่วนแสดง Caption (Overlay) */}
+        {item.caption && (
+          <div class="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <p class="text-white text-sm text-center font-light">
+              {item.caption}
+            </p>
+          </div>
+        )}
+      </a>
+    ))
+  }
+</div>
