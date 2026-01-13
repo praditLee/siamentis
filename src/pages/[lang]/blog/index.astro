@@ -25,6 +25,12 @@ const postsInThisLang = allPosts
 
 // (5) ตั้งชื่อหน้าตามภาษา
 const pageTitle = lang === "en" ? "Blog" : "บทความ";
+
+const { pathname } = Astro.url;
+const translationLink =
+  lang === "th"
+    ? pathname.replace("/th", "/en")
+    : pathname.replace("/en", "/th");
 ---
 
 <!doctype html>
@@ -33,7 +39,7 @@ const pageTitle = lang === "en" ? "Blog" : "บทความ";
     <BaseHead title={pageTitle} />
   </head>
   <body>
-    <Header />
+    <Header translationUrl={translationLink} />
     <section class="py-12">
       <div class="container mx-auto max-w-6xl px-6">
         <h1 class="mb-12 text-center text-4xl font-bold md:text-5xl">

@@ -2,6 +2,7 @@
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 import siamentisLogo from "../assets/siamentis_logo.svg";
+import Search from "./Search.astro";
 
 const { translationUrl } = Astro.props;
 const allPages = import.meta.glob("../pages/**/*.{md,mdx,astro}");
@@ -112,6 +113,8 @@ const projectLinks = [
       </button>
 
       <div id="menu-items" class="hidden md:flex items-center space-x-6">
+        <HeaderLink href={`/${currentLang}/about`}>About</HeaderLink>
+        <HeaderLink href={`/${currentLang}/services`}>Services</HeaderLink>
         <div class="relative group">
           <button
             class="flex items-center font-medium text-gray-700 hover:text-orange-500 transition-colors py-2"
@@ -151,9 +154,10 @@ const projectLinks = [
             </div>
           </div>
         </div>
-        <HeaderLink href={`/${currentLang}/services`}>Services</HeaderLink>
+
         <HeaderLink href={`/${currentLang}/blog`}>Blog</HeaderLink>
-        <HeaderLink href={`/${currentLang}/about`}>About</HeaderLink>
+
+        <Search />
         {
           hasTranslation && (
             <a

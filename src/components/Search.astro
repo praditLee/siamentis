@@ -1,0 +1,145 @@
+---
+import "@pagefind/default-ui/css/ui.css";
+---
+
+<button
+  id="search-trigger"
+  class="text-gray-600 hover:text-orange-500 transition-colors focus:outline-none p-2 rounded-full hover:bg-gray-100"
+  aria-label="Open search"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+  </svg>
+</button>
+
+<dialog
+  id="search-modal"
+  class="bg-transparent p-0 w-full h-full max-w-full max-h-full backdrop:bg-black/60 open:flex items-start justify-center pt-[10vh]"
+>
+  <div
+    class="bg-white dark:bg-gray-800 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden m-4 p-6 relative animate-fade-in-up"
+  >
+    <button
+      id="close-search"
+      class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <div id="pagefind-search" class="mt-2"></div>
+  </div>
+</dialog>
+
+<script>
+  // Script จัดการ Modal และโหลด Pagefind
+
+  const searchTrigger = document.getElementById("search-trigger");
+  const searchModal = document.getElementById(
+    "search-modal"
+  ) as HTMLDialogElement;
+  const closeBtn = document.getElementById("close-search");
+
+  // ฟังก์ชันเปิด Modal
+  searchTrigger?.addEventListener("click", () => {
+    searchModal?.showModal();
+
+    // โหลด Pagefind เมื่อเปิดครั้งแรกเท่านั้น (Lazy Load)
+    if (!document.querySelector(".pagefind-ui")) {
+      import("@pagefind/default-ui").then(({ PagefindUI }) => {
+        new PagefindUI({
+          element: "#pagefind-search",
+          showSubResults: true,
+          showImages: false,
+          autofocus: true, // ให้ cursor ไปกระพริบที่ช่องค้นหาทันที
+          translations: {
+            placeholder: "ค้นหาในเว็บไซต์...",
+            zero_results: "ไม่พบข้อมูลสำหรับ [SEARCH_TERM]",
+            // ... ใส่คำแปลอื่นๆ ตามต้องการ
+          },
+        });
+      });
+    }
+  });
+
+  // ฟังก์ชันปิด Modal (กดปุ่ม X)
+  closeBtn?.addEventListener("click", () => {
+    searchModal?.close();
+  });
+
+  // ฟังก์ชันปิด Modal (กดที่พื้นหลังสีดำ)
+  searchModal?.addEventListener("click", (event) => {
+    const rect = searchModal.getBoundingClientRect();
+    const isInDialog =
+      rect.top <= event.clientY &&
+      event.clientY <= rect.top + rect.height &&
+      rect.left <= event.clientX &&
+      event.clientX <= rect.left + rect.width;
+
+    // ถ้าคลิกนอกพื้นที่ dialog (ที่เป็น backdrop) ให้ปิด
+    if (event.target === searchModal) {
+      searchModal.close();
+    }
+  });
+</script>
+
+<style is:global>
+  /* Animation เล็กน้อยตอนเปิด Modal */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out;
+  }
+
+  /* ปรับแต่งสีของ Pagefind ให้เข้ากับ Modal */
+  :root {
+    --pagefind-ui-scale: 0.9;
+    --pagefind-ui-primary: #f97316; /* สีส้มตาม Theme คุณ */
+    --pagefind-ui-text: #ffffff;
+    --pagefind-ui-background: #ffffff;
+    --pagefind-ui-border: #e5e7eb;
+    --pagefind-ui-border-radius: 8px;
+    --pagefind-ui-font: sans-serif;
+  }
+
+  /* Dark mode override */
+  html.dark {
+    --pagefind-ui-text: #ffffff;
+    --pagefind-ui-background: #1f2937; /* สีพื้นหลัง input ใน dark mode */
+    --pagefind-ui-border: #4b5563;
+  }
+
+  /* ซ่อน Scrollbar ของ body เวลาเปิด Modal (ถ้าต้องการ) */
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+</style>

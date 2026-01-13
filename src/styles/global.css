@@ -41,6 +41,7 @@
 	--accent-dark: #000d8a;
 	--white: 255, 255, 255;
 	--black: 15, 18, 25;
+	--orange : #ffc430;
 	--orange-light: 241, 97, 34;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -93,6 +94,12 @@ h6 {
 	margin: 0 0 0.5rem 0;
 	line-height: 1.2;
 }
+p > a {
+	color: var(--orange)
+}
+a:hover {
+	color: rgba(var(--orange-light))
+}
 strong,
 b {
 	font-weight: 700;
@@ -131,7 +138,7 @@ pre > code {
 	all: unset;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
+	border-left: 4px solid var(--orange);
 	padding: 0 0 0 20px;
 	margin: 0px;
 	font-size: 1.333em;
