@@ -34,7 +34,7 @@ const mySlides = [
   },
   {
     image: "/images/SMT_Key-Visual-workshop-02.webp",
-    title: "Empowering Next Gen",
+    title: "Empowering the Next Generation",
     description:
       "These skills encompass communication, collaboration, critical thinking, problem-solving, creativity, emotional intelligence, and resilience.",
     link: "/en/about",
@@ -215,17 +215,17 @@ const partners = [
             // ตั้งค่าปุ่ม Navigation (ต้องหาจากใน sliderElement นั้นๆ เท่านั้น)
             navigation: {
               nextEl: sliderElement.querySelector(
-                ".swiper-button-next"
+                ".swiper-button-next",
               ) as HTMLElement,
               prevEl: sliderElement.querySelector(
-                ".swiper-button-prev"
+                ".swiper-button-prev",
               ) as HTMLElement,
             },
 
             // ตั้งค่า Pagination
             pagination: {
               el: sliderElement.querySelector(
-                ".swiper-pagination"
+                ".swiper-pagination",
               ) as HTMLElement,
               clickable: true,
               dynamicBullets: true, // ทำให้จุดขนาดไม่เท่ากัน (ดูทันสมัย)
