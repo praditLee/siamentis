@@ -9,13 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.10",
-    "@astrojs/rss": "^4.0.13",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
     "@fontsource-variable/anuphan": "^5.2.8",
     "@fontsource/ibm-plex-sans-thai": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.15.4",
+    "astro": "^5.16.12",
     "sharp": "^0.34.3",
     "swiper": "^12.0.3",
     "tailwindcss": "^4.1.18"
