@@ -1,0 +1,605 @@
+<div class="my-10">
+  <button
+    onclick="openFormModal()"
+    class="mt-6 inline-flex items-center bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 scroll-reveal opacity-0 translate-y-10 transition-all duration-1200 ease-out cursor-pointer"
+  >
+    Register
+    <svg
+      class="ml-2 w-4 h-4"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      ><path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+      ></path></svg
+    >
+  </button>
+</div>
+
+<div
+  id="form-overlay"
+  class="fixed inset-0 z-[999999] bg-gray-50 hidden overflow-y-auto pointer-events-auto"
+>
+  <button
+    onclick="closeFormModal()"
+    class="fixed top-4 right-4 md:top-8 md:right-8 bg-white p-2 rounded-full shadow-md text-gray-500 hover:text-red-600 focus:outline-none z-50 transition cursor-pointer"
+  >
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <div
+    class="max-w-4xl mx-auto my-12 bg-white rounded-xl shadow-xl p-6 md:p-10 relative"
+  >
+    <iframe
+      name="hidden_iframe"
+      id="hidden_iframe"
+      style="display:none;"
+      onload="if(window.isFormSubmitted){ showSuccess(); }"></iframe>
+
+    <div id="form-container">
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">Registration Form</h2>
+      <p class="text-gray-500">
+        U.S. Colleges & Entrepreneurship Summer Trip (July 11 - July 19, 2026)
+      </p>
+      <p class="text-sm text-gray-500 mb-12 border-b pb-8">
+        Please complete this form to express your interest in joining the
+        upcoming U.S. Colleges & Entrepreneurship Summer Trip (July 11 - July
+        19, 2026). Once we have received your responses, we will contact you
+        about next steps. If you have any questions about this interest form,
+        please reach out to us at contact@siamentis.com
+      </p>
+
+      <form
+        action="https://docs.google.com/forms/d/e/1FAIpQLSfvn0h--e_sFBAHSMHQvvByfnyx_4jzD1mSTFJ8x696SdWRkg/formResponse"
+        method="POST"
+        target="hidden_iframe"
+        onsubmit="window.isFormSubmitted=true;"
+        class="space-y-8"
+      >
+        <div>
+          <h3 class="text-xl font-semibold text-blue-800 mb-4">
+            Student Information
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Student First Name (as per passport)</label
+              >
+              <input
+                type="text"
+                name="entry.1102754232"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Student Last Name (as per passport)</label
+              >
+              <input
+                type="text"
+                name="entry.40595085"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Student Email Address</label
+              >
+              <input
+                type="email"
+                name="entry.499733357"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Student Phone Number</label
+              >
+              <input
+                type="tel"
+                name="entry.139514364"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-200">
+          <h3 class="text-xl font-semibold text-blue-800 mb-4">
+            Guardian Information
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Guardian First Name</label
+              >
+              <input
+                type="text"
+                name="entry.1420819627"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Guardian Last Name</label
+              >
+              <input
+                type="text"
+                name="entry.1814591762"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Guardian Email Address</label
+              >
+              <input
+                type="email"
+                name="entry.212348064"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Guardian Phone Number</label
+              >
+              <input
+                type="tel"
+                name="entry.1515201115"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-200">
+          <h3 class="text-xl font-semibold text-blue-800 mb-4">
+            Academic & Trip Information
+          </h3>
+
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Student's Educational Institution</label
+            >
+            <input
+              type="text"
+              name="entry.2004750195"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >Student Year/Grade</label
+            >
+            <select
+              name="entry.137613394"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400 bg-white"
+            >
+              <option value="" disabled selected>Select Grade</option>
+              <option value="Year 10/Grade 9">Year 10/Grade 9</option>
+              <option value="Year 11/Grade 10">Year 11/Grade 10</option>
+              <option value="Year 12/Grade 11">Year 12/Grade 11</option>
+              <option value="Year 13/Grade 12">Year 13/Grade 12</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Why are you interested in participating in this specific field
+              trip? (150 words max).</label
+            >
+            <textarea
+              name="entry.1827441915"
+              rows="4"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400"
+            ></textarea>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Do you currently hold a valid passport?</label
+              >
+              <select
+                name="entry.2144751566"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400 bg-white"
+              >
+                <option value="" disabled selected>Select Option</option>
+                <option value="Yes">Yes</option>
+                <option value="No, but I will apply immediately"
+                  >No, but I will apply immediately</option
+                >
+                <option
+                  value="No, and I require more information on the timeline"
+                  >No, and I require more information on the timeline</option
+                >
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Do you currently hold a valid US Visa?</label
+              >
+              <select
+                name="entry.1762897850"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white placeholder-gray-400 bg-white"
+              >
+                <option value="" disabled selected>Select Option</option>
+                <option value="Yes">Yes</option>
+                <option value="No, but I will apply immediately"
+                  >No, but I will apply immediately</option
+                >
+                <option
+                  value="No, and I require more information on the timeline"
+                  >No, and I require more information on the timeline</option
+                >
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-200 space-y-4">
+          <h3 class="text-xl font-semibold text-blue-800 mb-4">Agreements</h3>
+
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+            <p class="text-sm text-gray-700 mb-3 leading-relaxed">
+              I grant permission to the organizing institutions to use my
+              likeness, voice, and words in photographs, audio, and/or video
+              recordings taken during the field trip for promotional,
+              educational, or informational purposes, including publication on
+              websites, social media, and printed materials. I understand that I
+              will not receive compensation for such use.
+            </p>
+            <label class="flex items-start space-x-3 cursor-pointer">
+              <input
+                type="checkbox"
+                name="entry.919389932"
+                value="I Agree to the Media Release Terms"
+                required
+                class="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded"
+              />
+              <span class="text-gray-900 font-medium text-sm"
+                >I Agree to the Media Release Terms</span
+              >
+            </label>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+            <div class="text-sm text-gray-700 mb-3 leading-relaxed space-y-2">
+              <p>
+                The total cost for the trip is 159,000 THB, excluding airfare,
+                travel insurance, and visa costs.
+              </p>
+              <p>
+                The cost of the trip includes: food, lodging, ground
+                transportation (while in the United States), trip apparel,
+                facilitators, program coordination fee, workshops, activities,
+                and excursions.
+              </p>
+              <p>
+                Students and parents will be responsible for booking the
+                required specified flights, purchasing travel insurance with a
+                minimum coverage of (3,000,000 THB) for the entire duration of
+                the trip, and obtaining a valid U.S. visa to enter the country
+                for the purposes of the field trip.
+              </p>
+              <p class="font-semibold mt-2">Flights Information</p>
+              <ul class="list-disc pl-5">
+                <li>July 11: TG634 / TG6272</li>
+                <li>July 16: NK752</li>
+                <li>July 18: KE92 / KE659</li>
+              </ul>
+            </div>
+            <label class="flex items-start space-x-3 cursor-pointer mt-4">
+              <input
+                type="checkbox"
+                name="entry.1624697087"
+                value="I Acknowledge and Accept the Financial and other responsibilities related to the trip."
+                required
+                class="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded"
+              />
+              <span class="text-gray-900 font-medium text-sm"
+                >I Acknowledge and Accept the Financial and other
+                responsibilities related to the trip.</span
+              >
+            </label>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+            <p class="text-sm text-gray-700 mb-3 leading-relaxed">
+              Please read the summary of the field trip Refund Policy below: 1.
+              Initial Deposit (Non-refundable). 2. Cancellation 60+ days prior
+              to departure: 75% of total trip cost refunded (minus deposit). 3.
+              Cancellation 30-60 days prior to departure: 50% of total trip cost
+              refunded (minus deposit). 4. Cancellation less than 30 days prior
+              to departure: 0% refund. I acknowledge that I have read and
+              understood the summary of the Refund Policy for International
+              Field Trips, and I agree to its terms regarding financial
+              commitments.
+            </p>
+            <label class="flex items-start space-x-3 cursor-pointer">
+              <input
+                type="checkbox"
+                name="entry.161664483"
+                value="I Acknowledge and Accept the Refund Policy"
+                required
+                class="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded"
+              />
+              <span class="text-gray-900 font-medium text-sm"
+                >I Acknowledge and Accept the Refund Policy</span
+              >
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-200 space-y-3">
+          <h3 class="text-xl font-semibold text-blue-800 mb-4">
+            Preferred Communication
+          </h3>
+          <div class="flex flex-col space-y-3">
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input
+                type="checkbox"
+                name="entry.366370299"
+                value="Group Meeting/Information Session"
+                class="w-5 h-5 text-blue-600 border-gray-300 rounded"
+              />
+              <span class="text-gray-700 text-sm"
+                >Group Meeting / Information Session</span
+              >
+            </label>
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input
+                type="checkbox"
+                name="entry.366370299"
+                value="Email"
+                class="w-5 h-5 text-blue-600 border-gray-300 rounded"
+              />
+              <span class="text-gray-700 text-sm">Email</span>
+            </label>
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input
+                type="checkbox"
+                name="entry.366370299"
+                value="SMS/Text Message"
+                class="w-5 h-5 text-blue-600 border-gray-300 rounded"
+              />
+              <span class="text-gray-700 text-sm">SMS / Text Message</span>
+            </label>
+          </div>
+        </div>
+        <div class="mb-6 mt-6">
+          <label class="block text-sm font-medium text-gray-700 mb-3"
+            >On a scale of 1 to 10, how committed are you to participating if
+            selected?</label
+          >
+          <div
+            class="flex flex-wrap gap-2 md:justify-between bg-gray-50 p-4 rounded-lg border border-gray-200"
+          >
+            <div
+              class="w-full flex justify-between text-xs text-gray-500 mb-1 px-2"
+            >
+              <span>Slightly Committed</span>
+              <span>Absolutely Committed</span>
+            </div>
+            <div class="flex justify-between w-full">
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">1</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="1"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">2</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="2"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">3</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="3"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">4</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="4"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">5</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="5"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">6</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="6"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">7</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="7"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">8</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="8"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">9</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="9"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+              <label
+                class="flex flex-col items-center cursor-pointer hover:bg-gray-200 p-2 rounded transition"
+                ><span class="mb-1 text-sm font-medium text-gray-600">10</span
+                ><input
+                  type="radio"
+                  name="entry.428048813"
+                  value="10"
+                  required
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                /></label
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8">
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-xl shadow-md transition duration-200 text-lg cursor-pointer"
+          >
+            Submit Application
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div id="success-message" class="hidden text-center py-20">
+      <div
+        class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-green-100 mb-8"
+      >
+        <svg
+          class="w-12 h-12 text-green-500"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            d="M5 13l4 4L19 7"></path>
+        </svg>
+      </div>
+      <h2 class="text-4xl font-bold text-gray-800 mb-4">
+        Submission Successful!
+      </h2>
+      <p class="text-gray-600 mb-10 text-xl">
+        Thank you! We have received your information successfully.
+      </p>
+
+      <button
+        onclick="closeFormModal()"
+        class="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-12 rounded-xl transition duration-200 shadow-md text-lg cursor-pointer"
+      >
+        Close Window
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // ประกาศแบบ global ไปเลย เพื่อหลีกเลี่ยง Scope issue
+  window.isFormSubmitted = false;
+
+  function openFormModal() {
+    const overlay = document.getElementById("form-overlay");
+    overlay.classList.remove("hidden");
+    overlay.scrollTop = 0;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeFormModal() {
+    document.getElementById("form-overlay").classList.add("hidden");
+    document.body.style.overflow = "";
+
+    if (window.isFormSubmitted) {
+      setTimeout(() => {
+        document.getElementById("form-container").classList.remove("hidden");
+        document.getElementById("success-message").classList.add("hidden");
+        document.querySelector("form").reset();
+        window.isFormSubmitted = false;
+      }, 500);
+    }
+  }
+
+  function showSuccess() {
+    document.getElementById("form-container").classList.add("hidden");
+    document.getElementById("success-message").classList.remove("hidden");
+    document
+      .getElementById("form-overlay")
+      .scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
