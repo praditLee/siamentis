@@ -1,0 +1,471 @@
+---
+// src/pages/entr2026.astro
+// คุณสามารถนำ Layout หลักของเว็บไซต์มาครอบ (Wrap) หน้านี้ได้เลยครับ
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import MainLayout from "../layouts/PageLayout.astro";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title="U.S. Colleges & Entrepreneurship Trip 2026"
+      description="Visit U.S. colleges and experience real entrepreneurship education"
+    />
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-inter">
+    <section
+      class="relative bg-cover bg-center min-h-[80vh] flex items-center"
+      style="background-image: url('/images/container05.webp');"
+    >
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="relative z-10 container mx-auto px-6 md:px-12 text-white">
+        <h1
+          class="text-5xl md:text-7xl font-bold leading-tight mb-4 font-inter scroll-reveal opacity-0 translate-y-10 transition-all duration-600 ease-out"
+        >
+          Immerse Yourself <br /> This Summer.
+        </h1>
+        <p
+          class="text-xl md:text-3xl mb-2 max-w-2xl scroll-reveal opacity-0 translate-y-10 transition-all duration-800 ease-out"
+        >
+          Visit U.S. colleges and experience real entrepreneurship education.
+        </p>
+        <p
+          class="text-lg md:text-xl font-light mb-12 scroll-reveal opacity-0 translate-y-10 transition-all duration-1000 ease-out"
+        >
+          Trip Dates: July 11 - July 19, 2026
+        </p>
+        <a
+          href="https://forms.gle/TBPun9SJyfdv7qR98"
+          class="mt-6 inline-flex items-center bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 scroll-reveal opacity-0 translate-y-10 transition-all duration-1200 ease-out"
+        >
+          Interest Form
+          <svg
+            class="ml-2 w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            ></path></svg
+          >
+        </a>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="container mx-auto mx-auto px-6 md:px-12">
+        <h2
+          class="text-sm tracking-widest uppercase text-gray-400 mb-16 text-left font-inter"
+        >
+          Program Highlights
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mt-12">
+          <div>
+            <div
+              class="flex flex-row item-center gap-1 mb-2 text-2xl md:text-4xl font-bold scroll-reveal opacity-0 translate-y-10 transition-all duration-100 ease-out"
+            >
+              <div>Nine</div>
+              <div class="text-gray-600">Days.</div>
+            </div>
+            <div
+              class="flex flex-row item-center gap-1 mb-2 text-2xl md:text-4xl font-bold scroll-reveal opacity-0 translate-y-10 transition-all duration-200 ease-out"
+            >
+              <div>Three</div>
+              <div class="text-gray-600">Cities.</div>
+            </div>
+            <div
+              class="flex flex-row item-center gap-1 mb-2 text-2xl md:text-4xl font-bold scroll-reveal opacity-0 translate-y-10 transition-all duration-300 ease-out"
+            >
+              <div>Eight</div><div class="text-gray-600">Campuses.</div>
+            </div>
+            <div
+              class="flex flex-row item-center gap-1 mb-2 text-2xl md:text-4xl font-bold scroll-reveal opacity-0 translate-y-10 transition-all duration-400 ease-out"
+            >
+              <div>Four</div><div class="text-gray-600">Businesses.</div>
+            </div>
+
+            <p
+              class="mt-4 md:mt-12 text-sm md:text-lg max-w-lg font-light leading-relaxed scroll-reveal opacity-0 translate-y-10 transition-all duration-600 ease-out"
+            >
+              Experience the innovative and entrepreneurial spirit that makes
+              U.S. higher education stand out. This trip combines campus visits
+              with hands-on workshops to give students a truly immersive
+              experience.
+            </p>
+          </div>
+
+          <div class="md:border-l border-gray-200 md:pl-12">
+            <div class="space-y-6">
+              <h3 class="text-2xl md:text-4xl font-bold font-inter">
+                Find Your College Campus Fit.
+              </h3>
+              <p class="text-gray-600 text-sm md:text-lg leading-relaxed">
+                Whether its tight-knit and rural, large and metropolitan, or
+                somewhere in between; see what each has to offer, and where you
+                might flourish.
+              </p>
+            </div>
+            <div class="space-y-6">
+              <h3 class="text-2xl md:text-4xl font-bold font-inter">
+                Build Innovation & Entrepreneurship Skills
+              </h3>
+              <p class="text-gray-600 text-sm md:text-lg leading-relaxed">
+                Innovation and entrepreneurship drive advancements in the world.
+                Learn from real entrepreneurs and leading faculty members, and
+                put your knowledge to use in our 3-day experiential workshop in
+                Ann Arbor, Michigan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="js-parallax-section relative py-16 min-h-[50vh] overflow-hidden flex items-center justify-center bg-black"
+    >
+      <img
+        src="/images/container07.webp"
+        alt="Background"
+        class="js-parallax-bg absolute -top-[50%] left-0 w-full h-[200%] object-cover pointer-events-none opacity-50"
+      />
+
+      <div class="relative z-10 container mx-auto px-6 md:px-12 text-white">
+        <h2 class="text-7xl font-bold mb-6 drop-shadow-lg">Campus Visits</h2>
+        <p class="text-2xl max-w-[600px] mb-6 drop-shadow-md">
+          Visit eight diverse campuses in three iconic U.S. destinations for
+          higher education.
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-white py-16">
+      <div class="container mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <ul
+            class="font-bold font-inter text-3xl mb-8 border-r border-gray-200 pr-0 md:pr-12"
+          >
+            <li class="mb-3">University of Illinois-Chicago</li>
+            <li class="my-3">Boston University</li>
+            <li class="my-3">Northwestern University</li>
+            <li class="my-3">Harvard University</li>
+            <li class="my-3">University of Chicago</li>
+            <li class="my-3">Babson College</li>
+            <li class="my-3">University of Michigan</li>
+            <li class="my-3">Massachusetts Institute of Technology</li>
+          </ul>
+          <div class="text-gray-600 text-lg">
+            <p>
+              The United States has an abundance of options when it comes to
+              higher education.
+            </p>
+            <p>
+              Colleges and university comes in a variety of types and sizes. One
+              of the most helpful things to do during a college search is to
+              visit a number of campuses.
+            </p>
+            <p>
+              In this trip, we will visit 8 different campuses, ranging from a
+              small, rural, private college, to large public universities with
+              campuses in the city. Students will be able to see and feel the
+              differences between the campus environments, and use this as a
+              guide for making their final college decisions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="js-parallax-section relative py-16 min-h-[50vh] overflow-hidden flex items-center justify-center bg-black"
+    >
+      <img
+        src="/images/container08.webp"
+        alt="Background"
+        class="js-parallax-bg absolute -top-[20%] left-0 w-full h-[200%] object-cover pointer-events-none opacity-50"
+      />
+
+      <div class="relative z-10 container mx-auto px-6 md:px-12 text-white">
+        <h2 class="text-7xl font-bold mb-6 drop-shadow-lg">
+          Hands-On Workshops
+        </h2>
+        <p class="text-2xl max-w-[600px] mb-6 drop-shadow-md">
+          Engage in 3 days of Innovation & Entrepreneurship Workshops in Ann
+          Arbor, Michigan.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12 border-b border-gray-200">
+      <div class="container mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="pr-8 md:border-r border-gray-200">
+            <h3 class="text-4xl font-inter font-bold mb-4">
+              Innovation Workshops at the University of Michigan
+            </h3>
+            <p class="text-lg">
+              Work on problem solving and solution development with University
+              of Michigan faculty, consistently ranked one of the best
+              undergraduate Entrepreneurship programs in the country.
+            </p>
+          </div>
+          <div class="md:px-8 md:border-r border-gray-200">
+            <h3 class="text-4xl font-inter font-bold mb-4">
+              Excursions to Accelerators and Local Businesses
+            </h3>
+            <p class="text-lg">
+              Visit a range of founders from a bootstrapped Marketing agency to
+              a VC-backed biotech start-up. See how ideas grow into reality
+              outside of the university campus.
+            </p>
+          </div>
+          <div class="md:px-8">
+            <h3 class="text-4xl font-inter font-bold mb-4">
+              Hands-On Prototyping Challenges
+            </h3>
+            <p class="text-lg">
+              Roll up your sleeves, as you engage in a series of hands-on
+              prototyping challenges. You will launch a product at one of the
+              biggest cultural events in Ann Arbor.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 container mx-auto px-6 md:px-12">
+      <h2
+        class="text-sm tracking-widest uppercase text-gray-400 mb-16 text-left font-inter"
+      >
+        Program Itinerary
+      </h2>
+      <div
+        class="flex flex-col lg:flex-row-reverse items-start justify-center lg:gap-16 mt-12"
+      >
+        <div class="w-full lg:w-1/2 flex flex-col space-y-10 lg:pr-16 lg:p-0">
+          <h1 class="text-3xl font-inter text-gray-950 mb-6">Chicago</h1>
+
+          <div class="space-y-8 text-gray-900 leading-relaxed">
+            <div>
+              <h2 class="text-lg font-bold mb-2">July 11</h2>
+              <p class="text-sm">Arrive and check into hotel</p>
+            </div>
+
+            <div>
+              <h2 class="text-lg font-bold mb-2">July 12</h2>
+              <p class="text-sm">Chicago City Tour</p>
+              <p class="text-sm">Arts and Culture Activities</p>
+            </div>
+
+            <div>
+              <h2 class="text-lg font-bold mb-2">July 13</h2>
+              <p class="text-sm">University of Illinois-Chicago</p>
+              <p class="text-sm">Northwestern University</p>
+              <p class="text-sm">University of Chicago</p>
+              <p class="text-sm">Travel to Ann Arbor</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full h-full lg:w-1/2">
+          <img
+            src="/images/Chicago.webp"
+            alt="Chicago skyline with river and bridge at night"
+            class="w-full shadow-2xl object-cover"
+          />
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col lg:flex-row-reverse items-start justify-center lg:gap-16 mt-12"
+      >
+        <div class="w-full lg:w-1/2 flex flex-col space-y-10 lg:pr-16 lg:p-0">
+          <h1 class="text-3xl font-inter text-gray-950 mb-6">Ann Arbor</h1>
+
+          <div class="space-y-8 text-gray-900 leading-relaxed">
+            <div>
+              <h2 class="text-lg font-bold mb-2">July 14</h2>
+              <p class="text-sm">
+                University of Michigan Entrepreneurship Workshop
+              </p>
+              <p class="text-sm">Mentoring Session</p>
+            </div>
+
+            <div>
+              <h2 class="text-lg font-bold mb-2">July 15</h2>
+              <p class="text-sm">Prototyping Workshop</p>
+              <p class="text-sm">Excursions to Businesses</p>
+              <p class="text-sm">Farmstead Dinner & Bonfire</p>
+            </div>
+
+            <div>
+              <h2 class="text-lg font-bold mb-2">July 13</h2>
+              <p class="text-sm">Entrepreneurship Practicum</p>
+              <p class="text-sm">Travel to Boston</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full h-full lg:w-1/2">
+          <img
+            src="/images/Ann-Arbor.webp"
+            alt="Ann Arbor"
+            class="w-full shadow-2xl object-cover"
+          />
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col lg:flex-row-reverse items-start justify-center lg:gap-16 mt-12"
+      >
+        <div class="w-full lg:w-1/2 flex flex-col space-y-10 lg:pr-16 lg:p-0">
+          <h1 class="text-3xl font-inter text-gray-950 mb-6">Boston</h1>
+
+          <div class="space-y-8 text-gray-900 leading-relaxed">
+            <div>
+              <h2 class="text-lg font-bold mb-2">July 17</h2>
+              <p class="text-sm">Boston City Tour</p>
+              <p class="text-sm">Boston University</p>
+              <p class="text-sm">Harvard University</p>
+              <p class="text-sm">Massachusetts Institute of Technology</p>
+              <p class="text-sm">Babson College</p>
+              <p class="text-sm">Trip Debrief & Reflections</p>
+            </div>
+
+            <div>
+              <h2 class="text-lg font-bold mb-2">July 17</h2>
+              <p class="text-sm">Breakfast</p>
+              <p class="text-sm">Travel to Bangkok</p>
+            </div>
+
+            <div>
+              <h2 class="text-lg font-bold mb-2">July 19</h2>
+              <p class="text-sm">Arrive in Bangkok</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full h-full lg:w-1/2">
+          <img
+            src="/images/Boston.webp"
+            alt="Boston"
+            class="w-full shadow-2xl object-cover"
+          />
+        </div>
+      </div>
+      <a
+        href="https://forms.gle/TBPun9SJyfdv7qR98"
+        class="mt-6 inline-flex items-center bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 scroll-reveal opacity-0 translate-y-10 transition-all duration-1200 ease-out"
+      >
+        Interest Form
+        <svg
+          class="ml-2 w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+          ></path></svg
+        >
+      </a>
+    </section>
+
+    <footer class="py-16 border-t border-gray-200">
+      <div
+        class="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12"
+      >
+        <div>
+          <h2 class="text-3xl font-inter mb-4">
+            Have questions? Don't hesitate to reach out.
+          </h2>
+          <a
+            href="mailto:contact@siamentis.com"
+            class="inline-block bg-white text-black font-semibold py-3 px-8 mt-4 mb-12 hover:bg-gray-200 transition border border-orange-600"
+            >Contact Us</a
+          >
+        </div>
+
+        <div>
+          <img src="src/assets/siamentis_logo.svg" class="w-50 mb-6" />
+          <p class="mb-4 text-sm">
+            Siamentis Limited was founded in 2002. We partner with experts and
+            organizations worldwide to design and deliver best-in-class
+            educational programs.
+          </p>
+          <p class="text-sm">
+            Disclaimer, Siamentis Limited reserves the right to adjust trip
+            itinerary or cancel programming based on cost fluctuations, not
+            meeting the minimum number of sign-ups, or other unforeseen
+            circumstances that prevent the trip to proceed as planned. In the
+            event of a trip cancellation, Siamentis will return any refundable
+            costs to clients.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // โค้ดนี้จะทำงานเมื่อโหลดหน้าเว็บเสร็จ
+      document.addEventListener("DOMContentLoaded", () => {
+        // ตั้งค่าตัวตรวจจับว่าผู้ใช้เลื่อนมาเห็นองค์ประกอบนั้นหรือยัง
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              // ถ้าเลื่อนมาเห็นแล้ว (isIntersecting)
+              if (entry.isIntersecting) {
+                // เอาคลาสที่ซ่อนไว้ออก และใส่คลาสที่แสดงผลเข้าไปแทน
+                entry.target.classList.remove("opacity-0", "translate-y-10");
+                entry.target.classList.add("opacity-100", "translate-y-0");
+                // ให้ทำงานแค่ครั้งเดียวตอนเลื่อนผ่าน
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1, // ทำงานเมื่อเห็นส่วนของ Element อย่างน้อย 10%
+            rootMargin: "0px 0px -50px 0px", // ให้ทำงานก่อนถึงขอบล่าง 50px
+          },
+        );
+
+        // ค้นหาทุก Element ที่มีคลาส .scroll-reveal แล้วเริ่มสังเกตการณ์
+        const hiddenElements = document.querySelectorAll(".scroll-reveal");
+        hiddenElements.forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>
+<script>
+  // 1. ดึงกล่อง parallax ทั้งหมดมาเก็บไว้ในตัวแปร (เป็น Array-like)
+  const parallaxSections = document.querySelectorAll(".js-parallax-section");
+
+  window.addEventListener("scroll", function () {
+    // 2. วนลูปจัดการทีละกล่อง
+    parallaxSections.forEach(function (section) {
+      // ค้นหารูปภาพที่อยู่ "ภายในกล่องนั้นๆ" เท่านั้น
+      const bg = section.querySelector(".js-parallax-bg");
+      if (!bg) return; // ถ้าไม่มีรูปให้ข้ามไป
+
+      const rect = section.getBoundingClientRect();
+
+      // 3. เช็คว่ากล่องนี้กำลังแสดงอยู่บนหน้าจอหรือไม่
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const windowCenter = window.innerHeight / 2;
+        const sectionCenter = rect.top + rect.height / 2;
+        const distance = windowCenter - sectionCenter;
+
+        const speed = 0.2; // ปรับความเร็วตรงนี้ได้ตามต้องการ
+        const scrollOffset = distance * speed;
+
+        bg.style.transform = `translateY(${scrollOffset}px)`;
+      }
+    });
+  });
+</script>

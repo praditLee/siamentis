@@ -20,6 +20,9 @@ importers:
       '@fontsource-variable/anuphan':
         specifier: ^5.2.8
         version: 5.2.8
+      '@fontsource-variable/inter':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource/ibm-plex-sans-thai':
         specifier: ^5.2.8
         version: 5.2.8
@@ -259,6 +262,9 @@ packages:
 
   '@fontsource-variable/anuphan@5.2.8':
     resolution: {integrity: sha512-FkrSnSrcgbpUxovuOfvbhdVZ2pk5RS2e1XxI6+Hb1IlZ/dYq1am1lrp8Y9PKSmVnie4Vq+x5eatPvEGNMRhkdA==}
+
+  '@fontsource-variable/inter@5.2.8':
+    resolution: {integrity: sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ==}
 
   '@fontsource/ibm-plex-sans-thai@5.2.8':
     resolution: {integrity: sha512-pddJU1HCjtqbXRcyCnbEJ8UV8pQQuUo23Hxjvdwr0DBibtUra66MVsFMDP/Et/Su5P2VeQAgalACZOCEkWaReA==}
@@ -2110,6 +2116,8 @@ snapshots:
     optional: true
 
   '@fontsource-variable/anuphan@5.2.8': {}
+
+  '@fontsource-variable/inter@5.2.8': {}
 
   '@fontsource/ibm-plex-sans-thai@5.2.8': {}
 

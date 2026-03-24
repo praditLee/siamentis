@@ -6,6 +6,8 @@
 
 @import "@fontsource/ibm-plex-sans-thai";
 
+@import '@fontsource-variable/inter';
+
 /* 3. ตั้งค่า Theme (นี่คือวิธีใหม่ของ v4) */
 @theme {
   /* สร้างตัวแปร font-heading ใหม่ 
@@ -17,8 +19,10 @@
   /* ถ้าอยากกำหนด font body ทั่วไปแยกต่างหาก (เช่นใช้ Inter หรือ Helvetica) 
 
   --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif; */
-  --font-sans: "Atkinson", "Anuphan Variable", sans-serif;
-  
+
+  /* สร้างตัวแปรใหม่ชื่อ font-inter เพื่อไม่ให้กวนเว็บหลัก */
+  --font-inter: "Inter Variable", "Inter", sans-serif;
+
   /* ถ้าอยากแยก Heading ให้ต่างหาก ก็ทำได้เช่นกัน */
   --font-heading: "Atkinson", "Anuphan Variable", sans-serif;
 }
