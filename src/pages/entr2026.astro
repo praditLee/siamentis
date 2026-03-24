@@ -117,8 +117,10 @@ import RegisForm from "../components/RegisForm.astro";
       />
 
       <div class="relative z-10 container mx-auto px-6 md:px-12 text-white">
-        <h2 class="text-7xl font-bold mb-6 drop-shadow-lg">Campus Visits</h2>
-        <p class="text-2xl max-w-[600px] mb-6 drop-shadow-md">
+        <h2 class="text-4xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+          Campus Visits
+        </h2>
+        <p class="text-lg md:text-2xl max-w-[600px] mb-6 drop-shadow-md">
           Visit eight diverse campuses in three iconic U.S. destinations for
           higher education.
         </p>
@@ -172,10 +174,10 @@ import RegisForm from "../components/RegisForm.astro";
       />
 
       <div class="relative z-10 container mx-auto px-6 md:px-12 text-white">
-        <h2 class="text-7xl font-bold mb-6 drop-shadow-lg">
+        <h2 class="text-3xl md:text-7xl font-bold mb-6 drop-shadow-lg">
           Hands-On Workshops
         </h2>
-        <p class="text-2xl max-w-[600px] mb-6 drop-shadow-md">
+        <p class="text-lg md:text-2xl max-w-[600px] mb-6 drop-shadow-md">
           Engage in 3 days of Innovation & Entrepreneurship Workshops in Ann
           Arbor, Michigan.
         </p>
@@ -186,7 +188,7 @@ import RegisForm from "../components/RegisForm.astro";
       <div class="container mx-auto px-6 md:px-12">
         <div class="grid md:grid-cols-3 gap-8">
           <div class="pr-8 md:border-r border-gray-200">
-            <h3 class="text-4xl font-inter font-bold mb-4">
+            <h3 class="text-2xl md:text-4xl font-inter font-bold mb-4">
               Innovation Workshops at the University of Michigan
             </h3>
             <p class="text-lg">
@@ -196,7 +198,7 @@ import RegisForm from "../components/RegisForm.astro";
             </p>
           </div>
           <div class="md:px-8 md:border-r border-gray-200">
-            <h3 class="text-4xl font-inter font-bold mb-4">
+            <h3 class="text-2xl md:text-4xl font-inter font-bold mb-4">
               Excursions to Accelerators and Local Businesses
             </h3>
             <p class="text-lg">
@@ -206,7 +208,7 @@ import RegisForm from "../components/RegisForm.astro";
             </p>
           </div>
           <div class="md:px-8">
-            <h3 class="text-4xl font-inter font-bold mb-4">
+            <h3 class="text-2xl md:text-4xl font-inter font-bold mb-4">
               Hands-On Prototyping Challenges
             </h3>
             <p class="text-lg">
@@ -225,24 +227,37 @@ import RegisForm from "../components/RegisForm.astro";
       >
         Program Itinerary
       </h2>
-      <div
-        class="flex flex-col lg:flex-row-reverse items-start justify-center lg:gap-16 mt-12"
-      >
-        <div class="w-full lg:w-1/2 flex flex-col space-y-10 lg:pr-16 lg:p-0">
-          <h1 class="text-3xl font-inter text-gray-950 mb-6">Chicago</h1>
 
-          <div class="space-y-8 text-gray-900 leading-relaxed">
+      <div
+        class="flex flex-col lg:flex-row-reverse items-start justify-center lg:gap-16 mt-12 mb-20"
+      >
+        <div
+          class="w-full lg:w-1/2 flex flex-col space-y-8 lg:pr-16 lg:p-0 order-1 lg:order-none"
+        >
+          <h1
+            class="text-4xl font-inter font-bold text-gray-950 order-1 lg:order-none"
+          >
+            Chicago
+          </h1>
+
+          <img
+            src="/images/Chicago.webp"
+            alt="Chicago skyline"
+            class="w-full shadow-2xl object-cover rounded-lg order-2 lg:hidden mt-4 mb-6"
+          />
+
+          <div
+            class="space-y-8 text-gray-900 leading-relaxed order-3 lg:order-none"
+          >
             <div>
               <h2 class="text-lg font-bold mb-2">July 11</h2>
               <p class="text-sm">Arrive and check into hotel</p>
             </div>
-
             <div>
               <h2 class="text-lg font-bold mb-2">July 12</h2>
               <p class="text-sm">Chicago City Tour</p>
               <p class="text-sm">Arts and Culture Activities</p>
             </div>
-
             <div>
               <h2 class="text-lg font-bold mb-2">July 13</h2>
               <p class="text-sm">University of Illinois-Chicago</p>
@@ -253,22 +268,36 @@ import RegisForm from "../components/RegisForm.astro";
           </div>
         </div>
 
-        <div class="w-full h-full lg:w-1/2">
+        <div class="w-full h-full lg:w-1/2 hidden lg:block">
           <img
             src="/images/Chicago.webp"
             alt="Chicago skyline with river and bridge at night"
-            class="w-full shadow-2xl object-cover"
+            class="w-full shadow-2xl object-cover rounded-xl"
           />
         </div>
       </div>
 
       <div
-        class="flex flex-col lg:flex-row-reverse items-start justify-center lg:gap-16 mt-12"
+        class="flex flex-col lg:flex-row-reverse items-start justify-center lg:gap-16 mt-12 mb-20"
       >
-        <div class="w-full lg:w-1/2 flex flex-col space-y-10 lg:pr-16 lg:p-0">
-          <h1 class="text-3xl font-inter text-gray-950 mb-6">Ann Arbor</h1>
+        <div
+          class="w-full lg:w-1/2 flex flex-col space-y-8 lg:pr-16 lg:p-0 order-1 lg:order-none"
+        >
+          <h1
+            class="text-4xl font-inter font-bold text-gray-950 order-1 lg:order-none"
+          >
+            Ann Arbor
+          </h1>
 
-          <div class="space-y-8 text-gray-900 leading-relaxed">
+          <img
+            src="/images/Ann-Arbor.webp"
+            alt="Ann Arbor"
+            class="w-full shadow-2xl object-cover rounded-lg order-2 lg:hidden mt-4 mb-6"
+          />
+
+          <div
+            class="space-y-8 text-gray-900 leading-relaxed order-3 lg:order-none"
+          >
             <div>
               <h2 class="text-lg font-bold mb-2">July 14</h2>
               <p class="text-sm">
@@ -276,38 +305,50 @@ import RegisForm from "../components/RegisForm.astro";
               </p>
               <p class="text-sm">Mentoring Session</p>
             </div>
-
             <div>
               <h2 class="text-lg font-bold mb-2">July 15</h2>
               <p class="text-sm">Prototyping Workshop</p>
               <p class="text-sm">Excursions to Businesses</p>
               <p class="text-sm">Farmstead Dinner & Bonfire</p>
             </div>
-
             <div>
-              <h2 class="text-lg font-bold mb-2">July 13</h2>
+              <h2 class="text-lg font-bold mb-2">July 16</h2>
               <p class="text-sm">Entrepreneurship Practicum</p>
               <p class="text-sm">Travel to Boston</p>
             </div>
           </div>
         </div>
 
-        <div class="w-full h-full lg:w-1/2">
+        <div class="w-full h-full lg:w-1/2 hidden lg:block">
           <img
             src="/images/Ann-Arbor.webp"
             alt="Ann Arbor"
-            class="w-full shadow-2xl object-cover"
+            class="w-full shadow-2xl object-cover rounded-xl"
           />
         </div>
       </div>
 
       <div
-        class="flex flex-col lg:flex-row-reverse items-start justify-center lg:gap-16 mt-12"
+        class="flex flex-col lg:flex-row-reverse items-start justify-center lg:gap-16 mt-12 mb-20"
       >
-        <div class="w-full lg:w-1/2 flex flex-col space-y-10 lg:pr-16 lg:p-0">
-          <h1 class="text-3xl font-inter text-gray-950 mb-6">Boston</h1>
+        <div
+          class="w-full lg:w-1/2 flex flex-col space-y-8 lg:pr-16 lg:p-0 order-1 lg:order-none"
+        >
+          <h1
+            class="text-4xl font-inter font-bold text-gray-950 order-1 lg:order-none"
+          >
+            Boston
+          </h1>
 
-          <div class="space-y-8 text-gray-900 leading-relaxed">
+          <img
+            src="/images/Boston.webp"
+            alt="Boston"
+            class="w-full shadow-2xl object-cover rounded-lg order-2 lg:hidden mt-4 mb-6"
+          />
+
+          <div
+            class="space-y-8 text-gray-900 leading-relaxed order-3 lg:order-none"
+          >
             <div>
               <h2 class="text-lg font-bold mb-2">July 17</h2>
               <p class="text-sm">Boston City Tour</p>
@@ -317,13 +358,11 @@ import RegisForm from "../components/RegisForm.astro";
               <p class="text-sm">Babson College</p>
               <p class="text-sm">Trip Debrief & Reflections</p>
             </div>
-
             <div>
-              <h2 class="text-lg font-bold mb-2">July 17</h2>
+              <h2 class="text-lg font-bold mb-2">July 18</h2>
               <p class="text-sm">Breakfast</p>
               <p class="text-sm">Travel to Bangkok</p>
             </div>
-
             <div>
               <h2 class="text-lg font-bold mb-2">July 19</h2>
               <p class="text-sm">Arrive in Bangkok</p>
@@ -331,14 +370,15 @@ import RegisForm from "../components/RegisForm.astro";
           </div>
         </div>
 
-        <div class="w-full h-full lg:w-1/2">
+        <div class="w-full h-full lg:w-1/2 hidden lg:block">
           <img
             src="/images/Boston.webp"
             alt="Boston"
-            class="w-full shadow-2xl object-cover"
+            class="w-full shadow-2xl object-cover rounded-xl"
           />
         </div>
       </div>
+
       <RegisForm />
     </section>
 
