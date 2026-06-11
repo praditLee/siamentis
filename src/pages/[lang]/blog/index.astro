@@ -4,6 +4,7 @@ import { Image } from "astro:assets"; // 👈 (1) Import <Image> สำหรั
 import BaseHead from "../../../components/BaseHead.astro";
 import Footer from "../../../components/Footer.astro";
 import Header from "../../../components/Header.astro";
+import CookieToast from "../../../components/CookieToast.astro";
 
 // (2) ❗️ ตรวจสอบ Path เหล่านี้ ❗️
 // ให้แน่ใจว่ามันชี้ไปที่ไฟล์ Layout/Component ของคุณถูกต้อง
@@ -106,5 +107,6 @@ const translationLink =
       </div>
     </section>
     <Footer />
+    <CookieToast />
   </body>
 </html>
