@@ -3,66 +3,79 @@ const today = new Date();
 ---
 
 <footer>
-  &copy; {today.getFullYear()} Siamentis Ltd. All rights reserved.
-  <p class="text-sm py-6">
-    Siamentis Limited Registered Address: 190/1 Soi Sukhumvit 62/1 Sukhumvit
-    Road Prakanong Tai, Prakanong Bangkok 10260 T. +66 2333 0910-2 F. +66 2333
-    0913
-  </p>
-  <div class="social-links">
-    <a href="https://www.facebook.com/SiamentisAcademy" target="_blank">
-      <span class="sr-only">Follow Siamentis on Facebook</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        ><path
-          fill="currentColor"
-          d="M16,2c-7.732,0-14,6.268-14,14,0,6.566,4.52,12.075,10.618,13.588v-9.31h-2.887v-4.278h2.887v-1.843c0-4.765,2.156-6.974,6.835-6.974,.887,0,2.417,.174,3.043,.348v3.878c-.33-.035-.904-.052-1.617-.052-2.296,0-3.183,.87-3.183,3.13v1.513h4.573l-.786,4.278h-3.787v9.619c6.932-.837,12.304-6.74,12.304-13.897,0-7.732-6.268-14-14-14Z"
-        ></path></svg
-      >
-    </a>
-    <a href="https://www.youtube.com/@siamentis" target="_blank">
-      <span class="sr-only">Watch Siamentis channel on Youtube</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        ><path
-          fill="currentColor"
-          d="M31.331,8.248c-.368-1.386-1.452-2.477-2.829-2.848-2.496-.673-12.502-.673-12.502-.673,0,0-10.007,0-12.502,.673-1.377,.37-2.461,1.462-2.829,2.848-.669,2.512-.669,7.752-.669,7.752,0,0,0,5.241,.669,7.752,.368,1.386,1.452,2.477,2.829,2.847,2.496,.673,12.502,.673,12.502,.673,0,0,10.007,0,12.502-.673,1.377-.37,2.461-1.462,2.829-2.847,.669-2.512,.669-7.752,.669-7.752,0,0,0-5.24-.669-7.752ZM12.727,20.758V11.242l8.364,4.758-8.364,4.758Z"
-        ></path></svg
-      >
-    </a>
-    <a
-      id="copy-email"
-      aria-label="Copy Email"
-      data-email="contact@siamentis.com"
-      class="group relative text-slate-500 hover:text-white transition-colors"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-      >
-        <path
-          fill="currentColor"
-          d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M22.5,12.5
+  <div class="container mx-auto px-6 py-6">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-4">
+      <div class="text-center text-sm text-white md:text-left">
+        <p class="text-sm text-white">
+          &copy; {today.getFullYear()} Siamentis Ltd. All rights reserved.
+        </p>
+        <p class="text-sm text-white max-w-lg mx-auto md:mx-0">
+          Siamentis Limited Registered Address:<br />190/1 Soi Sukhumvit 62/1
+          Sukhumvit Road Prakanong Tai,<br />Prakanong Bangkok 10260<br /> T. +66
+          2333 0910-2 F. +66 2333 0913
+        </p>
+      </div>
+      <div class="text-center text-sm text-white md:text-right">
+        <a href="/en/privacy-policy">
+          <i class="fa-solid fa-lock"></i> Privacy Policy
+        </a>
+        <div class="social-links">
+          <a href="https://www.facebook.com/SiamentisAcademy" target="_blank">
+            <span class="sr-only">Follow Siamentis on Facebook</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              ><path
+                fill="currentColor"
+                d="M16,2c-7.732,0-14,6.268-14,14,0,6.566,4.52,12.075,10.618,13.588v-9.31h-2.887v-4.278h2.887v-1.843c0-4.765,2.156-6.974,6.835-6.974,.887,0,2.417,.174,3.043,.348v3.878c-.33-.035-.904-.052-1.617-.052-2.296,0-3.183,.87-3.183,3.13v1.513h4.573l-.786,4.278h-3.787v9.619c6.932-.837,12.304-6.74,12.304-13.897,0-7.732-6.268-14-14-14Z"
+              ></path></svg
+            >
+          </a>
+          <a href="https://www.youtube.com/@siamentis" target="_blank">
+            <span class="sr-only">Watch Siamentis channel on Youtube</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              ><path
+                fill="currentColor"
+                d="M31.331,8.248c-.368-1.386-1.452-2.477-2.829-2.848-2.496-.673-12.502-.673-12.502-.673,0,0-10.007,0-12.502,.673-1.377,.37-2.461,1.462-2.829,2.848-.669,2.512-.669,7.752-.669,7.752,0,0,0,5.241,.669,7.752,.368,1.386,1.452,2.477,2.829,2.847,2.496,.673,12.502,.673,12.502,.673,0,0,10.007,0,12.502-.673,1.377-.37,2.461-1.462,2.829-2.847,.669-2.512,.669-7.752,.669-7.752,0,0,0-5.24-.669-7.752ZM12.727,20.758V11.242l8.364,4.758-8.364,4.758Z"
+              ></path></svg
+            >
+          </a>
+          <a
+            id="copy-email"
+            aria-label="Copy Email"
+            data-email="contact@siamentis.com"
+            class="group relative text-slate-500 hover:text-white transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+            >
+              <path
+                fill="currentColor"
+                d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M22.5,12.5
     l-6.5,5.2l-6.5-5.2c0-0.133,0-0.267,0-0.4c0-1.159,0.941-2.1,2.1-2.1h8.8c1.159,0,2.1,0.941,2.1,2.1
     C22.5,12.233,22.5,12.367,22.5,12.5z M22.5,19.5c0,1.159-0.941,2.1-2.1,2.1h-8.8c-1.159,0-2.1-0.941-2.1-2.1
     v-5.6l6.5,5.2l6.5-5.2V19.5z"
-        ></path>
-      </svg>
-      <span
-        id="copy-feedback"
-        class="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 bg-gray-800 text-white text-xs py-1 px-2 rounded transition-all"
-      >
-        Copied!
-      </span>
-    </a>
+              ></path>
+            </svg>
+            <span
+              id="copy-feedback"
+              class="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 bg-gray-800 text-white text-xs py-1 px-2 rounded transition-all"
+            >
+              Copied!
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </footer>
 <script>

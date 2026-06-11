@@ -6,62 +6,54 @@ heroImage: "/images/about_siamentis.webp"
 lang: "en"
 ---
 
-## Who we are
+**Effective Date:** Janurary 1, 2026 | **Last Updated:** January 1, 2026
 
-Our website address is: https://siamentis.com.
+At **Siamentis Ltd.**, your trust is our most valuable asset. Whether you are a learner—regardless of whether you are a student or an adult—participating in our online learning tracks or engaging in our offline activities, a teacher in our school networks, or a candidate in a corporate-sponsored program, we are committed to being fully transparent about how we protect your personal data.
 
-## What personal data we collect and why we collect it
+This Privacy Policy explains what information we collect, how we use it, and how we keep it safe in strict compliance with the **Thailand Personal Data Protection Act (PDPA)**.
 
-### Comments
+### **1\. What Data Do We Collect?**
 
-When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor’s IP address and browser user agent string to help spam detection.
+We practice data minimization—which means we only collect the minimum amount of information required to deliver a high-quality educational experience.
 
-An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.
+- **Information You Give Us Directly:** When you sign up for our courses, create an account on our Learning Management System (LMS), or register for an activity, we typically collect your **Name, Surname, Email Address, Mobile Number, School/Institution Name, and Educational Level**.
+- **Project Content & Media (For Program Participants):** If you participate in workshops, assignments, activities, or competition phases, we collect the project descriptions, text, photographs, and any video content you actively choose to submit.
+- **Technical Information Automatically Collected:** When you browse our websites (www.siamentis.com and our managed project portals), we use cookies to look at aggregate traffic patterns, browser types, and device configurations to ensure our platforms remain stable and secure.
+- **Sensitive Information (On-Site Logistics Only):** For rare physical events and camps, we may temporarily collect **National Identification numbers** strictly to issue mandatory accident insurance and manage travel logistics.
 
-### Media
+**🔒 Protecting Minors:** Because we work closely with students, we do not knowingly collect or process data from individuals under 20 years old without explicit confirmation during registration that parental or guardian consent has been obtained.
 
-If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.
+### **2\. How Do We Use Your Data?**
 
-### Contact forms
+We use the information we collect to support your learning journey and optimize our programs under clear legal bases:
 
-### Cookies
+- **To Deliver Our Programs:** Creating your LMS user profiles, delivering course content, tracking your learning progress, and issuing certifications. _(Contractual Basis)_
+- **To Coordinate Events & Safety:** Managing camp logistics, coordinating with your school, and ensuring attendee safety through required event insurance. _(Legal Obligation & Vital Interests)_
+- **To Improve Our Services:** Looking at web traffic analytics to fix technical bugs, optimize our user interfaces, and secure our network against cyber threats. _(Legitimate Interest)_
 
-If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.
+### **3\. Who Do We Share Your Data With?**
 
-If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.
+We do not sell your personal data to third-party advertisers. We only share information with trusted entities necessary to make our programs possible:
 
-When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select "Remember Me", your login will persist for two weeks. If you log out of your account, the login cookies will be removed.
+- **Corporate Program Sponsors & Partners:** If you register for a specific corporate-sponsored initiative, your registration metrics, project submissions, and media assets are shared with that sponsor for compliance tracking, program evaluation, and public relations.
+- **Our Academic & School Partners:** For programs managed in tandem with specific schools (including our international school partners), relevant student attendance and academic metrics are shared directly with those institutions.
+- **Carefully Selected Service Providers:** We use premium, world-class cloud storage infrastructure, secure database providers, and learning management networks to host our systems. These providers are legally bound to safeguard your data with standard data encryption.
+- **Legal Authorities:** We will disclose information only if strictly required by a court order, official government mandate, or applicable Thai laws.
 
-If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.
+### **4\. How Long Do We Keep Your Data?**
 
-### Embedded content from other websites
+- **Learning Account Data:** We retain your general profile and progress data for the duration of your active course enrollment, school partnership cycle, or corporate program reporting requirements. Once no longer needed, it is permanently deleted or safely anonymized.
+- **Sensitive Data (National IDs):** Any sensitive ID numbers collected for physical event insurance are **permanently destroyed within 30 days** after the conclusion of the specific event.
 
-Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.
+### **5\. Your Rights: You Control Your Data**
 
-These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.
+Under the PDPA, your personal data belongs entirely to you. You have the right to request a copy of your data, correct any errors, object to processing, or **request the complete deletion of your records** at any time.  
+Please note that deleting your account data may result in the loss of access to your active courses or program participations.
 
-### Analytics
+### **💡 Contact Our Team**
 
-## Who we share your data with
+If you would like to exercise any of your data rights, or if you have any feedback regarding our privacy practices, you can reach out directly to our Co-Founder and designated Data Protection Officer (DPO):
 
-Google Analytic
-
-## How long we retain your data
-
-If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.
-
-For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.
-
-## What rights you have over your data
-
-If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.
-
-## Where we send your data
-
-Visitor comments may be checked through an automated spam detection service.
-
-## Your contact information
-
-You can contact us by address below:
-
-190/1 Soi Sukhumvit 62/1 Sukhumvit Road Prakanong Tai, Prakanong Bangkok 10260
+- **Company Name:** Siamentis Ltd.
+- **Email:** \[dpo@siamentis.com\]
+- **Website:** [www.siamentis.com](https://www.google.com/search?q=https://www.siamentis.com)

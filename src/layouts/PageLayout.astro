@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro"; //
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import CookieToast from "../components/CookieToast.astro";
 import "../styles/global.css";
 // รับ Frontmatter จากไฟล์ .md
 const props = Astro.props;
@@ -98,7 +99,7 @@ const lang = frontmatter.lang || props.lang || "en";
     </main>
 
     <Footer />
-
+    <CookieToast />
     <script
       src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"
     ></script>
@@ -126,7 +127,7 @@ const lang = frontmatter.lang || props.lang || "en";
         const allLists = contentArea.querySelectorAll("ul");
         allLists.forEach((list) => {
           const items = Array.from(list.children).filter(
-            (node) => node.tagName === "LI"
+            (node) => node.tagName === "LI",
           );
           if (items.length === 0) return;
           let isGallery = true;
