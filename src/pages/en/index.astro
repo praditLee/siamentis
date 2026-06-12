@@ -6,6 +6,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 import HeroSlider from "../../components/HeroSlider.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import LogoCarousel from "../../components/LogoCarousel.astro";
+import CookieToast from "../../components/CookieToast.astro";
 // เตรียมข้อมูล Slide
 const mySlides = [
   {
@@ -192,9 +193,9 @@ const partners = [
         </h2>
       </div>
     </section>
-    <section class="w-full py-12">
-      <!-- <LogoCarousel logos={partners} /> -->
-    </section>
+    <!-- <section class="w-full py-12">
+      <LogoCarousel logos={partners} />
+    </section> -->
     <Footer />
     <script>
       import Swiper from "swiper";
@@ -234,5 +235,6 @@ const partners = [
         });
       });
     </script>
+    <CookieToast />
   </body>
 </html>

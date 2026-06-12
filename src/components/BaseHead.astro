@@ -67,3 +67,31 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  // เช็คว่าเคยยอมรับไปหรือยัง
+  const hasConsented = localStorage.getItem("cookieConsent") === "true";
+
+  // ถ้ายังไม่เคยกดยอมรับ ให้ตั้งค่า default เป็น denied (ห้ามเก็บข้อมูล)
+  // ถ้าเคยยอมรับแล้ว ให้ตั้งค่าเป็น granted (อนุญาต)
+  gtag("consent", "default", {
+    analytics_storage: hasConsented ? "granted" : "denied",
+    ad_storage: hasConsented ? "granted" : "denied", // สำหรับ Google Ads (ถ้ามี)
+  });
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EPMK9JQHL2"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-EPMK9JQHL2");
+</script>

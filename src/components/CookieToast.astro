@@ -72,14 +72,18 @@
       }, 500);
     };
 
-    // เวลากด Accept ให้บันทึกค่าลงเครื่อง แล้วซ่อนกล่อง
+    // เวลากด Accept ให้บันทึกค่าลงเครื่อง แล้วอัปเดต Google Consent
     btnAccept.addEventListener("click", () => {
       localStorage.setItem("cookieConsent", "true");
-      hideToast();
-    });
 
-    // เวลากด Close ให้ซ่อนกล่องเฉยๆ (เผื่อหน้าถัดไปโหลดใหม่จะได้โชว์อีก จนกว่าจะกดยอมรับ)
-    btnClose.addEventListener("click", () => {
+      // ส่งสัญญาณไปบอก Google Analytics ว่าผู้ใช้อนุญาตแล้ว!
+      if (typeof gtag === "function") {
+        gtag("consent", "update", {
+          analytics_storage: "granted",
+          ad_storage: "granted",
+        });
+      }
+
       hideToast();
     });
   });
