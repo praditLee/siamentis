@@ -86,5 +86,21 @@
 
       hideToast();
     });
+    // 🌟 ส่วนที่ต้องเพิ่ม: ฟังก์ชันทำงานเมื่อกดปุ่มปฏิเสธ
+    btnClose.addEventListener("click", () => {
+      // บันทึกค่าลงเครื่องว่าผู้ใช้ทำการปฏิเสธ เพื่อไม่ให้แสดงกล่องนี้ซ้ำเมื่อโหลดหน้าใหม่
+      localStorage.setItem("cookieConsent", "false");
+
+      // (ทางเลือก) ส่งสัญญาณไปบอก Google Analytics ว่าผู้ใช้ไม่อนุญาต
+      if (typeof gtag === "function") {
+        gtag("consent", "update", {
+          analytics_storage: "denied",
+          ad_storage: "denied",
+        });
+      }
+
+      // เรียกใช้ฟังก์ชันซ่อนกล่อง Toast ที่เขียนไว้ก่อนหน้านี้
+      hideToast();
+    });
   });
 </script>

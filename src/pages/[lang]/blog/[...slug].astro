@@ -1,15 +1,14 @@
 ---
-import { getCollection } from "astro:content";
+// นำเข้า render เพิ่มเข้ามาสำหรับ Astro v5
+import { getCollection, render } from "astro:content";
 import BlogPostLayout from "../../../layouts/BlogPost.astro"; // (ตรวจสอบ Path นี้)
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
 
   return allPosts.map((post) => {
-    // ตอนนี้ post.slug จะมีค่า (เช่น 'en/my-post')
-    // และ post.data จะมีค่า (เช่น { lang: 'en', ... })
-    // สมมติ slug เป็น 'en/my-first-post' หรือ 'th/my-first-post'
-    const [lang, ...slugParts] = post.slug.split("/");
+    // เปลี่ยนจาก post.slug เป็น post.id
+    const [lang, ...slugParts] = post.id.split("/");
     return {
       params: { lang, slug: slugParts.join("/") || undefined },
       props: post,
@@ -18,8 +17,10 @@ export async function getStaticPaths() {
 }
 
 const post = Astro.props;
-const { Content } = await post.render();
+// ใช้ฟังก์ชัน render แบบใหม่ของ Astro v5
+const { Content } = await render(post);
 const { lang } = Astro.params;
+
 // --- 🔥 ส่วนที่ต้องเพิ่ม: หาคู่ของมัน ---
 
 // 1. กำหนดภาษาตรงข้าม
@@ -28,21 +29,20 @@ const otherLang = lang === "en" ? "th" : "en";
 // 2. ดึงบทความทั้งหมดมาเช็ค
 const allPosts = await getCollection("blog");
 
-// 3. หาว่ามีบทความที่มี slug เดียวกัน แต่อยู่คนละภาษาไหม
-// (สมมติว่าคุณตั้งชื่อไฟล์เหมือนกัน เช่น src/content/blog/en/post1.md และ src/content/blog/th/post1.md)
+// 3. หาว่ามีบทความที่มี id (ชื่อไฟล์) เดียวกัน แต่อยู่คนละภาษาไหม
 const translatedPost = allPosts.find((p) => {
-  const [pLang, ...pSlugParts] = p.slug.split("/");
+  // เปลี่ยนจาก p.slug เป็น p.id
+  const [pLang, ...pSlugParts] = p.id.split("/");
   const pSlug = pSlugParts.join("/");
 
   // เช็คว่าภาษาคือภาษาตรงข้าม AND ชื่อ slug (post1) ตรงกัน
-  return (
-    pLang === otherLang && pSlug === post.slug.split("/").slice(1).join("/")
-  );
+  // เปลี่ยนจาก post.slug เป็น post.id
+  return pLang === otherLang && pSlug === post.id.split("/").slice(1).join("/");
 });
 
 // 4. ถ้าเจอ ให้สร้าง URL เตรียมส่งไป
 const translationLink = translatedPost
-  ? `/${otherLang}/blog/${translatedPost.slug.split("/").slice(1).join("/")}`
+  ? `/${otherLang}/blog/${translatedPost.id.split("/").slice(1).join("/")}`
   : null;
 ---
 

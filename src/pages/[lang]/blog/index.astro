@@ -8,7 +8,6 @@ import CookieToast from "../../../components/CookieToast.astro";
 
 // (2) ❗️ ตรวจสอบ Path เหล่านี้ ❗️
 // ให้แน่ใจว่ามันชี้ไปที่ไฟล์ Layout/Component ของคุณถูกต้อง
-
 import FormattedDate from "../../../components/FormattedDate.astro";
 
 // (3) สร้าง 2 หน้า: /en/blog และ /th/blog
@@ -50,8 +49,8 @@ const translationLink =
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {
             postsInThisLang.map((post) => {
-              // (8) ดึง Slug ที่ถูกต้อง (ส่วนท้ายสุด)
-              const slug = post.slug.split("/").pop();
+              // (8) ดึงค่า URL ที่ถูกต้องโดยเปลี่ยนจาก slug เป็น id
+              const slug = post.id.split("/").pop();
               const href = `/${lang}/blog/${slug}/`;
 
               return (
@@ -91,13 +90,6 @@ const translationLink =
                         </p>
                       )}
                     </div>
-
-                    {/* <a
-                      href={href}
-                      class="mt-4 font-semibold text-blue-600 hover:underline"
-                    >
-                      {lang === "en" ? "Read more" : "อ่านต่อ"} &rarr;
-                    </a> */}
                   </div>
                 </article>
               );
